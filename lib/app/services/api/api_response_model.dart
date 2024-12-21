@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ngpiteapp/app/core/errors/network_failure_model.dart';
+import 'package:quick_delivery_admin/core/errors/network_failure_model.dart';
 
 class AppResponse<T> {
   bool success;

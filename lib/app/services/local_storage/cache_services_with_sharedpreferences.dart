@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:ngpiteapp/app/services/local_storage/cache_services.dart';
+import 'package:quick_delivery_admin/app/services/local_storage/cache_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheServicesSharedPreferences implements CacheServices {

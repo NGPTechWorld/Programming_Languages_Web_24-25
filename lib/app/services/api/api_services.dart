@@ -1,4 +1,5 @@
-import 'package:ngpiteapp/app/services/api/dio_consumer.dart';
+
+import 'package:quick_delivery_admin/app/services/api/dio_consumer.dart';
 
 abstract class ApiServices {
   dynamic request({
