@@ -19,7 +19,7 @@ class _StartPageState extends State<StartPage> {
   void initState() {
     super.initState();
     controller.loadingState.value = LoadingState.loading;
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 1), () {
       controller.startApp();
     });
   }

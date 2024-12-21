@@ -3,6 +3,8 @@ import 'package:quick_delivery_admin/app/services/local_storage/cache_services_w
 import 'package:quick_delivery_admin/data/enums/app_state_enum.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/repositories/users_repositories.dart';
+import 'package:quick_delivery_admin/screens/login_page/login_page.dart';
+import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
 
 class StartPageBinging extends Bindings {
   @override
@@ -20,9 +22,7 @@ class StartPageController extends GetxController {
 
   startApp() async {
     if (await cache.getUserToken() == null) {
-      
-    } else {
-      
-    }
+      Get.to(LoginPage(), binding: LoginPageBinding());
+    } else {}
   }
 }
