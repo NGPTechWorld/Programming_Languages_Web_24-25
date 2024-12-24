@@ -279,11 +279,7 @@ class TranslationApp implements Translations {
           StringManager.recommendedText: "",
           StringManager.allProducts: "All Products",
           StringManager.searchProductsText: "Search Products",
-          StringManager.ordersHistoryStatusCancelled: "Cancelled",
-          StringManager.ordersHistoryStatusRejected: "Rejected",
-          StringManager.ordersHistoryStatusCompleted: "Completed",
-          StringManager.ordersHistoryStatusPending: "Pending",
-          StringManager.ordersHistoryStatusDelivering: "Delivering",
+
 
           // TODO: translate in AR
           // Forgot Password page

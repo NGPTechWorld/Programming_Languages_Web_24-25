@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_delivery_admin/app/config/assets_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
-import 'package:quick_delivery_admin/screens/home_page/widgets/admin_menu_card.dart';
+
 import 'package:quick_delivery_admin/screens/home_page/widgets/seller_menu_card.dart';
 
 class MenuBarCustom extends StatelessWidget {

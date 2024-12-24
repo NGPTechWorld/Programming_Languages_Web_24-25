@@ -25,7 +25,7 @@ class SellerMenuCard extends GetView<HomePageController> {
           },
           child: MenuCard(
             icon: Icons.store,
-            title: "All Products",
+            title: "My Products",
           ),
         ),
         MenuCard(

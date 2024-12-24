@@ -6,11 +6,12 @@ import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
+import 'package:quick_delivery_admin/screens/my_product_page/my_product_page.dart';
 
 class HomePageBinging extends Bindings {
   @override
   void dependencies() {
-    Get.put(AddProductPageController());
+    Get.lazyPut(() => AddProductPageController());
     Get.put(HomePageController());
   }
 }
@@ -23,6 +24,7 @@ class HomePageController extends GetxController {
     SupPage(
       color: ColorManager.whiteColor,
     ),
+    MyProductPage(),
     AddProductPage(),
     SupPage(
       color: ColorManager.blackColor,

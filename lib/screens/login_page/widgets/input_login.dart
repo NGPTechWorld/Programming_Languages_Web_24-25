@@ -6,8 +6,6 @@ import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/bottun_custom.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/text_field_custom.dart';
-import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
-import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
 
 class InputLogin extends GetView<LoginPageController> {
@@ -50,7 +48,7 @@ class InputLogin extends GetView<LoginPageController> {
           ),
           BottouCustom(
             function: () {
-              Get.to(HomePage(), binding: HomePageBinging());
+              controller.login(context);
             },
             text: "Enter",
             textColor: ColorManager.whiteColor,
