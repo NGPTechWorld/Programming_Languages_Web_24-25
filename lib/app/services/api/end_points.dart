@@ -1,69 +1,59 @@
 class EndPoints {
   static const String baserUrl = "http://192.168.1.8:8000/api";
-  static const String registerUrl = "/users/register";
-  static const String loginUrl = "/users/login";
-  static const String logoutUrl = "/users/logout";
-  static const String forgetPasswordUrl = "/users/forgetPassword";
-  static const String verifyNumberUrl = "/users/verifyNumber";
-  static const String verifyNewPassword = "/users/verifyNewPassword";
-  static const String uploadImage = "/users/uploadImage";
-  static const String setPassword = "/users/setPassword";
-  static const String resetPassword = "/users/resetPassword";
-  static const String editUser = "/users/editUser";
-  static const String refreshToken = "/users/refreshToken";
-  static const String currentUser = "/users/currentUser";
-  static const String getImage = "/users/getImage";
-  static const String deleteImage = "/users/deleteImage";
-  static const String generateVerificationCode =
-      "/users/generateVerificationCode";
-  // Locations
-  static const String addLocation = "/locations/addLocation";
-  static const String getLocations = "/locations/getLocations";
-  static const String getLocation = "/locations/getLocation/"; //{location}
-  static const String deleteLocation =
-      "/locations/deleteLocation/"; //{location_id}
-  // Orders
-  static const String createOrder = "/orders/createOrder";
-  static const String editOrder = "/orders/editOrder/"; // {order}
-  static const String cancelOrder = "/orders/cancelOrder/"; // {order}
-  static const String deleteProduct =
-      "/orders/deleteProduct/"; // {order}/{product}
-  static const String getOrders = "/orders/getOrders";
+
+  //Admin
+  static const String addMarket = "/admins/addMarket";
+  static const String addAdmin = "/admins/addAdmin";
+  static const String editMarket = "/admins/editMarket/"; //{manager}
+  static const String completeOrder = "/admins/completeOrder/"; //{order}
+  static const String deliverOrder = "/admins/deliverOrder/"; //{order}
+  static const String rejectOrder = "/admins/rejectOrder/"; //{order}
+  static const String deleteMarket = "/admins/deleteMarket/"; //{manager}
+  static const String delete = "/admins/delete/"; //{product}
+  static const String getMarkets = "/admins/getMarkets";
+  static const String getProducts = "/admins/getProducts/"; //{market}
+  static const String getTopProducts = "/admins/getTopProducts";
+  static const String getTopProductsMarket =
+      "/admins/getTopProducts/"; //{market}
+  static const String getAllOrders = "/admins/getAllOrders";
+  static const String getMarketOrders = "/admins/getMarketOrders/"; //{order}
+  static const String getMarketOrdersByStatus =
+      "/admins/getMarketOrdersByStatus/"; //{order}/{status}
+  static const String getOrders = "/admins/getOrders/"; //{market}
   static const String getOrdersByStatus =
-      "/orders/getOrdersByStatus/"; //{status}
-  // 1 for succeeded ones
-  static const String getOrder = "/orders/getOrder/"; //{order}
+      "/admins/getOrdersByStatus/"; //{status}
+  static const String getOrder = "/admins/getOrder/"; //{order}
 
-  // Markets
-  static const String getMarkets = "/markets/getMarkets";
-  static const String getMarketsByName =
-      "/markets/getMarketsByName/"; //{market_name}
-  static const String getProductsForMarket =
-      "/markets/getProductsForMarket/"; //{market}
+  //managers
+  static const String loginManager = "/managers/login";
+  static const String logoutmMnager = "/managers/logout";
+  static const String refreshTokenManager = "/managers/refreshToken";
+  static const String resetPasswordManager = "/managers/resetPassword";
+  static const String checkTokenManager = "/managers/checkToken";
 
-  // Products
-  static const String toggleFavorite = "/products/toggleFavorite/"; //{product}/
-  static const String getFavoriteProducts = "/products/getFavoriteProducts";
-  static const String getProducts = "/products/getProducts";
-  static const String getProductsByCategory =
-      "/products/getProductsByCategory/"; //{category}
-  static const String getProduct = "/products/getProduct/"; //{product}
-  static const String getProductsByName =
-      "/products/getProductsByName/"; //{product_name}
-  static const String getImageProduct = "/products/getImage/"; //{product}
+  //Seller
+  static const String addProductSeller = "/sellers/addProduct";
+  static const String uploadImageSeller = "/sellers/uploadImage";
+  static const String uploadImageProduct = "/sellers/uploadImage/"; //{product}
+  static const String editSeller = "/sellers/edit/"; //{product}
+  static const String completeOrderSeller = "/sellers/completeOrder/"; //{order}
+  static const String rejectOrderSeller = "/sellers/rejectOrder/"; //{order}
+  static const String deleteSeller = "/sellers/delete/"; //{product}
+  static const String deleteImage = "/sellers/deleteImage";
+  static const String deleteImageProduct = "/sellers/deleteImage/"; //{product}
+  static const String getProductsSeller = "/sellers/getProducts";
+  static const String getTopProductsSeller = "/sellers/getTopProducts";
+  static const String getImage = "/sellers/getImage";
+  static const String getImageProduct = "/sellers/getImage/"; //{product}
+  static const String getOrdersSeller = "/sellers/getOrders";
+  static const String getOrdersByStatusSeller =
+      "/sellers/getOrdersByStatus/"; //{status}
+  static const String getOrderSeller = "/sellers/getOrder/"; //{order}
+
   // Category
   static const String getAllCategories = "/categories/getAll";
   static const String getCategory = "/categories/get/{category}";
-  // Carts
-  static const String addProductInCart = "/carts/addProduct/"; //{product}
-  static const String plusProductOneCart = "/carts/plusProductOne/"; //{product}
-  static const String minusProductOneCart =
-      "/carts/minusProductOne/"; //{product}
-  static const String deleteProductCart = "/carts/deleteProduct/"; //{product}
-  static const String clearCart = "/carts/clearCart";
-  static const String getCart = "/carts/getCart";
-
-  static const String test = "";
+  static const String test = "test";
 }
 
 class ApiKey {

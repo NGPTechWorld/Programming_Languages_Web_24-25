@@ -15,7 +15,7 @@ class StartPageBinging extends Bindings {
 
 class StartPageController extends GetxController {
   final isConnectedPage = true.obs;
-  final AuthRepositories = Get.find<ImpUsersRepositories>();
+  //final AuthRepositories = Get.find<ImpUsersRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
   var loadingState = LoadingState.idle.obs;
   var appState = AppState.run.obs;
