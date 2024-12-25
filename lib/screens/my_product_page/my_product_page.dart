@@ -4,17 +4,15 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+
 import 'package:quick_delivery_admin/screens/my_product_page/widgets/product_item.dart';
-import 'package:quick_delivery_admin/screens/custom_widgets/text_field_custom.dart';
 import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_logic.dart';
 
-class MyProductPage extends StatelessWidget {
+class MyProductPage extends GetView<MyProductPageController> {
   const MyProductPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MyProductPageController());
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,14 +28,9 @@ class MyProductPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 16.0),
-              //   child: TextFieldCustom(
-              //     controller: controller.searchController,
-              //     title: 'Search Products',
-              //     prefixIcon: Icon(Icons.search),
-              //   ),
-              // ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Container()),
               Wrap(
                 spacing: 16.0,
                 runSpacing: 16.0,

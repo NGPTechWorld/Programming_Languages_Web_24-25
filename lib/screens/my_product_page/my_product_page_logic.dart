@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quick_delivery_admin/app/config/assets_manager.dart';
-import 'package:quick_delivery_admin/app/services/api/end_points.dart';
+import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
-import 'package:quick_delivery_admin/screens/add_product_page/add_product_page.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
@@ -14,83 +10,18 @@ class MyProductPageController extends GetxController {
   final homeController = Get.find<HomePageController>();
   final productController = Get.find<AddProductPageController>();
   var products = <ProductsCardEntite>[
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
-    ProductsCardEntite(
-        id: 1,
-        name: 'Choko Cake',
-        price: 5000,
-        image: AssetsManager.appIcon,
-        category: "category"),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
   ];
 
   void addProduct() {
     productController.moniterMode.value = false;
-    homeController.indexPageSeller.value = 2;
+    homeController.indexPageSeller.value = 4;
   }
 
   void showProduct() {
@@ -114,44 +45,23 @@ class MyProductPageController extends GetxController {
     productController.fillProduct(Product.fromJson(data));
     productController.myproduct = Product.fromJson(data);
     productController.moniterMode.value = true;
-    homeController.indexPageSeller.value = 2;
+    homeController.indexPageSeller.value = 4;
   }
 }
 
-class ProductsCardEntite {
-  final String name;
-  final String image;
-  final int id;
-  final String category;
-  final int price;
-
-  ProductsCardEntite({
-    required this.name,
-    required this.image,
-    required this.id,
-    required this.category,
-    required this.price,
-  });
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      ApiKey.name: name,
-      ApiKey.image: image,
-      ApiKey.id: id,
-      ApiKey.category: category,
-      ApiKey.price: price,
-    };
-  }
-
-  factory ProductsCardEntite.fromMap(Map<String, dynamic> map) {
-    return ProductsCardEntite(
-      name: map[ApiKey.name] as String,
-      image: (map[ApiKey.image] as String?) ?? "",
-      id: map[ApiKey.id] as int,
-      category: map[ApiKey.category] as String,
-      price: map[ApiKey.price] as int,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-}
+final dataProductTemp = {
+  "id": 1,
+  "market_id": 1,
+  "name_en": "Choko Cake",
+  "name_ar": "كعكة شوكولا",
+  "quantity": 1,
+  "price": 10000,
+  "image": "/",
+  "description_en": "for birthdays",
+  "description_ar": "من اجل اعياد الميلاد",
+  "number_of_purchases": 1,
+  "created_at": "2024-12-18T09:38:05.000000Z",
+  "updated_at": "2024-12-18T12:08:03.000000Z",
+  "category_en": "Food and Drinks",
+  "category_ar": "أطعمة ومشروبات"
+};

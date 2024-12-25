@@ -32,6 +32,8 @@ class StringManager {
   static const EditProduct = "EditProduct";
   static const cansel = "cansel";
   static const UploadProductImage = "UploadProductImage";
+  //My Orders
+  static const MyOrdersPage = "MyOrdersPage";
 
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";
@@ -172,8 +174,11 @@ class StringManager {
   static const String storeText = "storeText";
   static const String searchProductsText = "searchProductsText";
   static const recommendedText = "recommendedText";
-  static const loading = "loading";
+  static const TopSellerProduct = "TopSellerProduct";
+  static const MyMarket = "MyMarket";
+  static const MarketName = "MarketName";
 
+ static const loading = "loading";
   // Common in Orders pages
   // Order Details Page
   static const String orderDetailsHeader = "orderDetailsHeader";

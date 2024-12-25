@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_logic.dart';
 
@@ -22,7 +23,7 @@ class ProductItem extends GetView<MyProductPageController> {
         },
         child: Container(
           width: 200,
-          height: 300,
+          //height: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s18),
             color: ColorManager.primary1Color,
@@ -35,12 +36,12 @@ class ProductItem extends GetView<MyProductPageController> {
                 children: [
                   Center(
                     child: Container(
-                      height: 120,
-                      width: 120,
+                      height: 200,
+                      width: 200,
                       child: Image.network(
-                        product.image,
-                        height: 150,
-                        width: 150,
+                        product.image!,
+                        height: 200,
+                        width: 200,
                         errorBuilder: (context, error, stackTrace) {
                           return ShimmerPlaceholder(height: 150, width: 150);
                         },
@@ -63,32 +64,35 @@ class ProductItem extends GetView<MyProductPageController> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: product.name + "\n",
+                            text: (Get.locale.toString() == "ar"
+                                    ? product.nameAr
+                                    : product.nameEn) +
+                                "\n",
                             style: StyleManager.body01_Semibold(
                               color: ColorManager.blackColor,
                             ),
                           ),
                           TextSpan(
-                            text: "\n" + product.category,
+                            text: "\n" +
+                                (Get.locale.toString() == "ar"
+                                    ? product.categoryAr
+                                    : product.categoryEn),
                             style: StyleManager.body02_Medium(
                               color: ColorManager.primary6Color,
                             ),
                           ),
                           TextSpan(
-                            text: "\n" + product.price.toString() + " ",
+                            text: "\n\n" + product.price.toString() + " ",
                             style: StyleManager.body01_Semibold(
-                              color: ColorManager.primary5Color,
-                            ),
-                          ),
-                          TextSpan(
-                            text: "",
-                            style: StyleManager.button2(
                               color: ColorManager.primary5Color,
                             ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                 ],
               ),

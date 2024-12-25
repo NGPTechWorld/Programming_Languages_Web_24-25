@@ -21,11 +21,10 @@ class AddProductPageController extends GetxController {
   final quantityController = TextEditingController();
   final homeController = Get.find<HomePageController>();
   final moniterMode = false.obs;
-   Product? myproduct;
+  Product? myproduct;
   RxInt selectedCategory = 1.obs;
   Rx<String> imageSelectedPath = ''.obs;
   Rx<Uint8List?> imageBytes = Rx<Uint8List?>(null);
-  
 
   var categories = [
     {'id': 1, 'name': 'Category 1'},
@@ -71,7 +70,7 @@ class AddProductPageController extends GetxController {
     nameENController.text = nameARController.text = descENController.text =
         descARController.text =
             priceController.text = quantityController.text = "";
-    selectedCategory.value = 0;
+    selectedCategory.value = 1;
     imageBytes = Rx<Uint8List?>(null);
     imageSelectedPath = ''.obs;
   }

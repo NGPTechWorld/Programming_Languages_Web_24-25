@@ -13,7 +13,7 @@ class SellerMenuCard extends GetView<HomePageController> {
       children: [
         InkWell(
           onTap: () {
-            controller.indexPageSeller.value = 0;
+            controller.gotToPage(0);
           },
           child: MenuCard(
             icon: Icons.dashboard,
@@ -22,20 +22,39 @@ class SellerMenuCard extends GetView<HomePageController> {
         ),
         InkWell(
           onTap: () {
-            controller.indexPageSeller.value = 1;
+            controller.gotToPage(1);
           },
           child: MenuCard(
             icon: Icons.store,
             title: StringManager.MyProducts.tr,
           ),
         ),
-        MenuCard(
-          icon: Icons.delivery_dining,
-          title: StringManager.MyOrders.tr,
+        InkWell(
+          onTap: () {
+            controller.gotToPage(2);
+          },
+          child: MenuCard(
+            icon: Icons.delivery_dining,
+            title: StringManager.MyOrders.tr,
+          ),
         ),
-        MenuCard(
-          icon: Icons.settings,
-          title: StringManager.Settings.tr,
+        InkWell(
+          onTap: () {
+            controller.gotToPage(3);
+          },
+          child: MenuCard(
+            icon: Icons.settings,
+            title: StringManager.Settings.tr,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            controller.languageOnTap();
+          },
+          child: MenuCard(
+            icon: Icons.language,
+            title: StringManager.languageDialogTitle.tr,
+          ),
         ),
         MenuCard(
           icon: Icons.logout,

@@ -129,6 +129,9 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusPending: "معلق",
           StringManager.ordersHistoryStatusDelivering: "قيد التوصيل",
           //Home page
+          StringManager.MyMarket: "متجري",
+          StringManager.MarketName: "اسم المتجر: ",
+          StringManager.TopSellerProduct: "أكثر المنتجات بيعاً",
           StringManager.homeTitle: "الصفحة الرئيسية",
           StringManager.storeText: "المتاجر",
           StringManager.recommendedText: "",
@@ -289,6 +292,9 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusPending: "Pending",
           StringManager.ordersHistoryStatusDelivering: "Delivering",
           //Home page
+          StringManager.MyMarket: "My Market",
+          StringManager.MarketName: "Market Name",
+          StringManager.TopSellerProduct: "Top Seller Product",
           StringManager.homeTitle: "Home Page",
           StringManager.storeText: "Markets",
           StringManager.recommendedText: "",
