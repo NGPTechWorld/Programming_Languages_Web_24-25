@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
@@ -15,9 +16,8 @@ class InputDetailProduct extends GetView<AddProductPageController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
           Text(
-            "Enter Price:",
+            StringManager.EnterPrice.tr,
             style: StyleManager.h4_Medium(),
           ),
           SizedBox(
@@ -28,7 +28,7 @@ class InputDetailProduct extends GetView<AddProductPageController> {
           ),
           SizedBox(height: 10),
           Text(
-            "Enter Quantity:",
+            StringManager.EnterQuantity.tr,
             style: StyleManager.h4_Medium(),
           ),
           SizedBox(
@@ -39,7 +39,7 @@ class InputDetailProduct extends GetView<AddProductPageController> {
           ),
           SizedBox(height: 10),
           Text(
-            "Select Category:",
+            StringManager.SelectCategory.tr,
             style: StyleManager.h4_Medium(),
           ),
           SizedBox(

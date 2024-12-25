@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/add_product_page/widget/bottom_show_product.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/widget/input_desrp_product.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/widget/input_detail_product.dart';
-import 'package:quick_delivery_admin/screens/custom_widgets/bottun_custom.dart';
+import 'package:quick_delivery_admin/screens/add_product_page/widget/upload_image.dart';
 
 class AddProductPage extends GetView<AddProductPageController> {
   const AddProductPage({super.key});
@@ -14,9 +16,13 @@ class AddProductPage extends GetView<AddProductPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Add Product',
-          style: StyleManager.h2_Bold(),
+        title: Obx(
+          () => Text(
+            controller.moniterMode.value
+                ? StringManager.EditProduct.tr
+                : StringManager.AddProduct.tr,
+            style: StyleManager.h2_Bold(),
+          ),
         ),
         backgroundColor: ColorManager.primary2Color,
       ),
@@ -33,34 +39,7 @@ class AddProductPage extends GetView<AddProductPageController> {
                   InputDesProduct(),
                   SizedBox(width: 50),
                   InputDetailProduct(),
-                  Column(
-                    children: [
-                      Text(
-                        "Upload Product Image:",
-                        style: StyleManager.h4_Medium(),
-                      ),
-                      SizedBox(height: 20),
-                      Obx(
-                        () => GestureDetector(
-                          onTap: controller.pickImage,
-                          child: Container(
-                            width: 150,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                            ),
-                            child: controller.imageBytes.value == null
-                                ? Center(child: Text("Select Image"))
-                                : Image.memory(
-                                    controller.imageBytes.value!,
-                                    fit: BoxFit.contain,
-                                  ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                    ],
-                  )
+                  UploadImage()
                 ],
               ),
               SizedBox(height: 20),
@@ -68,37 +47,7 @@ class AddProductPage extends GetView<AddProductPageController> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(
-              width: 200,
-              child: BottouCustom(
-                function: controller.calnsel,
-                text: "Calnsel",
-                textColor: ColorManager.primary6Color,
-                background: ColorManager.primary1Color,
-                borderRadius: 15,
-              ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            SizedBox(
-              width: 200,
-              child: BottouCustom(
-                function: () {},
-                text: "Add Product",
-                textColor: ColorManager.whiteColor,
-                background: ColorManager.secoundColor,
-                borderRadius: 15,
-              ),
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomShowProduct(),
     );
   }
 }

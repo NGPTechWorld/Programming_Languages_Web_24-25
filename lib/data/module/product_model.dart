@@ -1,58 +1,71 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
-class ProductModel {
-  final String name;
-  final String image;
-  final String description;
+class Product {
   final int id;
-  final String market;
-  final String category;
+  final int marketId;
+  final String nameEn;
+  final String nameAr;
   final int quantity;
-  final int price;
-  final int number_of_purchases;
-  ProductModel({
-    required this.name,
-    required this.image,
-    required this.description,
+  final double price;
+  final String image;
+  final String descriptionEn;
+  final String descriptionAr;
+  final int numberOfPurchases;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String categoryEn;
+  final String categoryAr;
+
+  Product({
     required this.id,
-    required this.market,
-    required this.category,
+    required this.marketId,
+    required this.nameEn,
+    required this.nameAr,
     required this.quantity,
     required this.price,
-    required this.number_of_purchases,
+    required this.image,
+    required this.descriptionEn,
+    required this.descriptionAr,
+    required this.numberOfPurchases,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.categoryEn,
+    required this.categoryAr,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'image': image,
-      'description': description,
-      'id': id,
-      'market_id': market,
-      'category_id': category,
-      'quantity': quantity,
-      'price': price,
-      'number_of_purchases': number_of_purchases,
-    };
-  }
-
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    return ProductModel(
-      name: map['name'] as String,
-      image: (map['image'] as String?) ?? "",
-      description: map['description'] as String,
-      id: map['id'] as int,
-      market: map['market_name'] as String,
-      category: map['category'] as String,
-      quantity: map['quantity'] as int,
-      price: map['price'] as int,
-      number_of_purchases: map['number_of_purchases'] as int,
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      marketId: json['market_id'],
+      nameEn: json['name_en'],
+      nameAr: json['name_ar'],
+      quantity: json['quantity'],
+      price: json['price'].toDouble(),
+      image: json['image'],
+      descriptionEn: json['description_en'],
+      descriptionAr: json['description_ar'],
+      numberOfPurchases: json['number_of_purchases'],
+      createdAt: DateTime.parse(json['created_at']),
+      updatedAt: DateTime.parse(json['updated_at']),
+      categoryEn: json['category_en'],
+      categoryAr: json['category_ar'],
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'market_id': marketId,
+      'name_en': nameEn,
+      'name_ar': nameAr,
+      'quantity': quantity,
+      'price': price,
+      'image': image,
+      'description_en': descriptionEn,
+      'description_ar': descriptionAr,
+      'number_of_purchases': numberOfPurchases,
+      'created_at': createdAt.toIso8601String(),
+      'updated_at': updatedAt.toIso8601String(),
+      'category_en': categoryEn,
+      'category_ar': categoryAr,
+    };
+  }
 }

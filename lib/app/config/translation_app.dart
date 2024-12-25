@@ -143,6 +143,27 @@ class TranslationApp implements Translations {
           StringManager.forgotPassowrdEmailVerificationsubTitle:
               "لقد قمنا بإرسال كود من 6 خانات الى البريد الإلكتروني التالي:",
           StringManager.forgotPassowrdVerify: "تحقق",
+          //Menue
+          StringManager.Dashboard: "الرئيسية",
+          StringManager.MyProducts: "منتجاتي",
+          StringManager.MyOrders: "طلباتي",
+          StringManager.Settings: "الاعدادات",
+          //Add Product
+          StringManager.NumberOfPurchases: "عدد عمليات الشراء: ",
+          StringManager.CreateDate: "تاريخ الإنشاء: ",
+          StringManager.NameEnglish: "الاسم (الانكليزي)",
+          // ignore: equal_keys_in_map
+          StringManager.NameArabic: "الاسم (العربي)",
+          StringManager.cansel: "الغاء",
+          StringManager.DescriptionArabic: "الوصف (العربي)",
+          StringManager.DescriptionEnglish: "الوصف (الانكليزي)",
+          StringManager.EnterPrice: "السعر:",
+          StringManager.EnterQuantity: "الكمية:",
+          StringManager.SelectCategory: "الصنف:",
+          StringManager.AddProduct: "اضافة المنتج",
+          StringManager.SelectImage: "تحديد صورة",
+          StringManager.EditProduct: "تعديل المنتج",
+          StringManager.UploadProductImage: "رفع صورة للمنتج:",
         },
         "en": {
           //Sign Up
@@ -280,13 +301,32 @@ class TranslationApp implements Translations {
           StringManager.allProducts: "All Products",
           StringManager.searchProductsText: "Search Products",
 
-
-          // TODO: translate in AR
           // Forgot Password page
           StringManager.forgotPassowrdEmailVerificationTitle: "Forgot Password",
           StringManager.forgotPassowrdEmailVerificationsubTitle:
               "We have sent a code of 6 digits \nto the email:",
           StringManager.forgotPassowrdVerify: "Verify",
+          //Menue
+          StringManager.Dashboard: "Dashboard",
+          StringManager.MyProducts: "My Products",
+          StringManager.MyOrders: "My Orders",
+          StringManager.Settings: "Settings",
+          //Add Product
+          StringManager.NumberOfPurchases: "Number Of Purchases: ",
+          StringManager.CreateDate: "Create Date: ",
+          StringManager.NameEnglish: "Name (English): ",
+          // ignore: equal_keys_in_map
+          StringManager.NameArabic: "Name (Arabic): ",
+          StringManager.cansel: "Cansel",
+          StringManager.DescriptionArabic: "Description (Arabic): ",
+          StringManager.DescriptionEnglish: "Description (English): ",
+          StringManager.EnterPrice: "Enter Price:",
+          StringManager.EnterQuantity: "Enter Quantity:",
+          StringManager.SelectCategory: "Select Category:",
+          StringManager.AddProduct: "Add Product",
+          StringManager.SelectImage: "Select Image",
+          StringManager.EditProduct: "Edit Product",
+          StringManager.UploadProductImage: "Upload Product Image:",
         },
       };
 }

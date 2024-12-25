@@ -18,7 +18,7 @@ class App extends StatelessWidget {
       home: StartPage(),
       theme: ThemeManager.appTheme,
       initialBinding: StartPageBinging(),
-      locale: Locale("en"),
+      locale: Locale("ar"),
       translations: TranslationApp(),
     );
   }

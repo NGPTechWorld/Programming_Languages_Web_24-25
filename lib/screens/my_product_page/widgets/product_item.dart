@@ -18,6 +18,7 @@ class ProductItem extends GetView<MyProductPageController> {
       child: InkWell(
         onTap: () {
           // Get.to(ProductDetailsPage(product.id));
+          controller.showProduct();
         },
         child: Container(
           width: 200,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/screens/my_product_page/widgets/product_item.dart';
@@ -17,7 +18,7 @@ class MyProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'My Products',
+          StringManager.MyProducts.tr,
           style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,
@@ -29,14 +30,14 @@ class MyProductPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: TextFieldCustom(
-                  controller: controller.searchController,
-                  title: 'Search Products',
-                  prefixIcon: Icon(Icons.search),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 16.0),
+              //   child: TextFieldCustom(
+              //     controller: controller.searchController,
+              //     title: 'Search Products',
+              //     prefixIcon: Icon(Icons.search),
+              //   ),
+              // ),
               Wrap(
                 spacing: 16.0,
                 runSpacing: 16.0,

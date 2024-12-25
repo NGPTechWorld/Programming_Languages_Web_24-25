@@ -10,6 +10,26 @@ class StringManager {
   static const uploadPicture = "uploadPicture";
   static const submitPicture = "submitPicture";
   static const skip = "skip";
+  //Menue
+  static const Dashboard = "Dashboard";
+  static const MyProducts = "MyProducts";
+  static const MyOrders = "MyOrders";
+  static const Settings = "Settings";
+  //Add Product
+  static const NumberOfPurchases = "NumberOfPurchases";
+  static const CreateDate = "CreateDate";
+  static const NameEnglish = "NameEnglish";
+  static const NameArabic = "NameEnglish";
+  static const DescriptionArabic = "DescriptionArabic";
+  static const DescriptionEnglish = "DescriptionEnglish";
+  static const EnterPrice = "EnterPrice";
+  static const EnterQuantity = "EnterQuantity";
+  static const SelectCategory = "SelectCategory";
+  static const SelectImage = "SelectImage";
+  static const AddProduct = "AddProduct";
+  static const EditProduct = "EditProduct";
+  static const cansel = "cansel";
+  static const UploadProductImage = "UploadProductImage";
 
   // Log in
   static const String enterPhoneNumber = "EnterPhoneNumber";

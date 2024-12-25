@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/widgets/menu_card.dart';
 
@@ -16,7 +17,7 @@ class SellerMenuCard extends GetView<HomePageController> {
           },
           child: MenuCard(
             icon: Icons.dashboard,
-            title: "Dashboard",
+            title: StringManager.Dashboard.tr,
           ),
         ),
         InkWell(
@@ -25,20 +26,20 @@ class SellerMenuCard extends GetView<HomePageController> {
           },
           child: MenuCard(
             icon: Icons.store,
-            title: "My Products",
+            title: StringManager.MyProducts.tr,
           ),
         ),
         MenuCard(
           icon: Icons.delivery_dining,
-          title: "My Orders",
+          title: StringManager.MyOrders.tr,
         ),
         MenuCard(
           icon: Icons.settings,
-          title: "Settings",
+          title: StringManager.Settings.tr,
         ),
         MenuCard(
           icon: Icons.logout,
-          title: "Log out",
+          title: StringManager.logout.tr,
         ),
       ],
     );

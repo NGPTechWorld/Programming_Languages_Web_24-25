@@ -15,8 +15,8 @@ class HomePage extends GetView<HomePageController> {
         children: [
           MenuBarCustom(),
           Obx(
-            () => Container(
-              width: AppSizeScreen.screenWidth * 0.85,
+            () => Expanded(
+              //width: AppSizeScreen.screenWidth * 0.85,
               child: IndexedStack(
                 index: controller.indexPageSeller.value,
                 children: controller.pagesSeller,
