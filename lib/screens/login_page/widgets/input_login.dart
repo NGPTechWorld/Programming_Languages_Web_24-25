@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/bottun_custom.dart';
@@ -20,14 +21,14 @@ class InputLogin extends GetView<LoginPageController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Enter Name:",
+            StringManager.EnterName.tr,
             style: StyleManager.h3_Regular(),
           ),
           TextFieldCustom(
             controller: controller.nameController,
           ),
           Text(
-            "Enter Password:",
+            StringManager.EnterPassword.tr,
             style: StyleManager.h3_Regular(),
           ),
           Obx(
@@ -50,7 +51,7 @@ class InputLogin extends GetView<LoginPageController> {
             function: () {
               controller.login(context);
             },
-            text: "Enter",
+            text: StringManager.Enter.tr,
             textColor: ColorManager.whiteColor,
           )
         ],

@@ -36,13 +36,10 @@ class TranslationApp implements Translations {
           StringManager.subTitlePhoneVerification:
               "لقد قمنا بإرسال كود من 6 خانات الى البريد الالكتروني التالي:",
           //Login
-          StringManager.dontHaveAccount: "ليس لديك حساب في التطبيق",
-          StringManager.errorisEmpty: "هذا الحقل فارغ",
-          StringManager.errorPhonenumberIsPaten: "رقم الهاتف غير صحيح",
-          StringManager.errorPasswordIsMin: "يجب ان تكون أكثر من 6 خانات",
-          StringManager.errorPasswordIsPatern:
-              "يجب ان تحوي أحرف كبيرة وصغيرة وأرقام",
-          StringManager.subTiltleLogin: "قم بتسجيل الدخول لإسختدام التطبيق",
+          StringManager.EnterName: "ادخل الاسم:",
+          StringManager.EnterPassword: "ادخل كلمة المرور:",
+          StringManager.Enter: "ادخل",
+
           // Address
           StringManager.addressPageTitle: "عنوانك",
           StringManager.addressPageName: "الاسم",
@@ -196,12 +193,9 @@ class TranslationApp implements Translations {
           StringManager.subTitlePhoneVerification:
               "We have sent a code of 6 digits \nto the email:",
           //Login
-          StringManager.dontHaveAccount: "Dont have an account?",
-          StringManager.errorisEmpty: "This field is empty",
-          StringManager.errorPhonenumberIsPaten: "The phone number is invalid",
-          StringManager.errorPasswordIsMin: "At least 6 characters",
-          StringManager.errorPasswordIsPatern:
-              "At least one number and special character",
+          StringManager.EnterName: "Enter Name:",
+          StringManager.EnterPassword: "Enter Password:",
+          StringManager.Enter: "Enter",
 
           // Address
           StringManager.addressPageTitle: "Your Address",

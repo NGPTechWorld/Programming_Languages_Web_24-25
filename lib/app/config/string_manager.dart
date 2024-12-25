@@ -2,7 +2,9 @@ class StringManager {
   static const titleApp = "titleApp";
   //LoginPage
   static const titleLogin = "titleLogin";
-  static const usernameText = "usernameText";
+  static const EnterName = "EnterName";
+  static const EnterPassword = "EnterPassword";
+  static const Enter = "Enter";
   //Upload Image
   static const titleUploadPicture = "titleUploadPicture";
   static const subTitleUploadPicture = "subTitleUploadPicture";
