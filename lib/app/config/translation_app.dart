@@ -128,6 +128,15 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusCompleted: "منجز",
           StringManager.ordersHistoryStatusPending: "معلق",
           StringManager.ordersHistoryStatusDelivering: "قيد التوصيل",
+          //My Order
+          StringManager.name: "الاسم: ",
+          StringManager.quantity: "الكمية: ",
+          StringManager.cost: "السعر الاجمالي: ",
+          StringManager.price: "السعر: ",
+          StringManager.total_cost: "السعر الكامل: ",
+          StringManager.products: "المنتجات:",
+          StringManager.salary: "الربح الاجمالي:",
+          StringManager.DateOrder: "تاريخ الطلب: ",
           //Home page
           StringManager.MyMarket: "متجري",
           StringManager.MarketName: "اسم المتجر: ",
@@ -291,6 +300,15 @@ class TranslationApp implements Translations {
           StringManager.ordersHistoryStatusCompleted: "Completed",
           StringManager.ordersHistoryStatusPending: "Pending",
           StringManager.ordersHistoryStatusDelivering: "Delivering",
+          //My Order
+          StringManager.name: "name: ",
+          StringManager.quantity: "quantity: ",
+          StringManager.cost: "cost: ",
+          StringManager.price: "price: ",
+          StringManager.total_cost: "total cost: ",
+          StringManager.products: "products: ",
+          StringManager.salary: "salary",
+          StringManager.DateOrder: "date order: ",
           //Home page
           StringManager.MyMarket: "My Market",
           StringManager.MarketName: "Market Name",

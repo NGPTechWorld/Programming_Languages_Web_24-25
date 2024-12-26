@@ -1,13 +1,12 @@
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:quick_delivery_admin/data/cache/const.dart';
+import 'package:quick_delivery_admin/data/entities/marcket_statistics.dart';
 import 'package:quick_delivery_admin/data/enums/app_state_enum.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/manager_model.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
-import 'package:quick_delivery_admin/screens/login_page/login_page.dart';
-import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
 
 class StartPageBinging extends Bindings {
   @override
@@ -34,8 +33,17 @@ class StartPageController extends GetxController {
       "name": "Harry Potter",
       "role": "seller",
       "created_at": "2024-12-18T09:37:18.000000Z",
-      "updated_at": "2024-12-18T09:37:18.000000Z"
+      "updated_at": "2024-12-18T09:37:18.000000Z",
+      "market_name_en": "be order",
+      "market_name_ar": "بي اوردر"
     };
+    final tempStat = {
+      "message": "statistics get seccessfully",
+      "number_of_products": 2,
+      "number_of_orders": 2,
+      "salary": 20000
+    };
+    marcketStatistics = MarcketStatistics.fromJson(tempStat);
     managerCurrent = ManagerModel.fromJson(tempData);
     Get.off(HomePage(), binding: HomePageBinging());
   }

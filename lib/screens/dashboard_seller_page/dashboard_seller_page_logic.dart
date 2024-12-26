@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
@@ -16,7 +15,7 @@ class DashboardSellerPageController extends GetxController {
     ProductsCardEntite.fromJson(dataProductTemp),
     ProductsCardEntite.fromJson(dataProductTemp),
   ];
-
+ 
   void showProduct() {
     final data = {
       "id": 3,
@@ -57,4 +56,11 @@ final dataProductTemp = {
   "updated_at": "2024-12-18T12:08:03.000000Z",
   "category_en": "Food and Drinks",
   "category_ar": "أطعمة ومشروبات"
+};
+
+final datatempStat = {
+  "message": "statistics get successfully",
+  "number_of_products": 2,
+  "number_of_orders": 1,
+  "salary": 20000
 };

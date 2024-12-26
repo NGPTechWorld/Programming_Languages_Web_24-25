@@ -5,11 +5,11 @@ import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 
-import 'package:quick_delivery_admin/screens/my_product_page/widgets/product_item.dart';
-import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_product_seller_page/widgets/product_item.dart';
+import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 
-class MyProductPage extends GetView<MyProductPageController> {
-  const MyProductPage({super.key});
+class MyProductSellerPage extends GetView<MyProductSellerPageController> {
+  const MyProductSellerPage({super.key});
 
   @override
   Widget build(BuildContext context) {

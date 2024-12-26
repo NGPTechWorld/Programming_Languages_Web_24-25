@@ -5,10 +5,10 @@ import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
-import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 
 // ignore: must_be_immutable
-class ProductItem extends GetView<MyProductPageController> {
+class ProductItem extends GetView<MyProductSellerPageController> {
   ProductsCardEntite product;
   ProductItem({super.key, required this.product});
 

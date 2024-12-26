@@ -5,7 +5,7 @@ import 'package:quick_delivery_admin/data/module/product_model.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
-class MyProductPageController extends GetxController {
+class MyProductSellerPageController extends GetxController {
   final searchController = TextEditingController();
   final homeController = Get.find<HomePageController>();
   final productController = Get.find<AddProductPageController>();

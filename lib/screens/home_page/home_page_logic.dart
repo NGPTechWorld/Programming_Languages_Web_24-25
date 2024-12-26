@@ -10,18 +10,18 @@ import 'package:quick_delivery_admin/screens/custom_widgets/helper_widget.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
-import 'package:quick_delivery_admin/screens/my_orders_page/my_orders_page.dart';
-import 'package:quick_delivery_admin/screens/my_orders_page/my_orders_page_logic.dart';
-import 'package:quick_delivery_admin/screens/my_product_page/my_product_page.dart';
-import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page.dart';
+import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page.dart';
+import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 
 class HomePageBinging extends Bindings {
   @override
   void dependencies() {
     if (managerCurrent!.role == "seller") {
       Get.lazyPut(() => AddProductPageController());
-      Get.lazyPut(() => MyProductPageController());
-      Get.lazyPut(() => (MyOrdersPageController()));
+      Get.lazyPut(() => MyProductSellerPageController());
+      Get.lazyPut(() => (MyOrdersSellerPageController()));
       Get.lazyPut(() => (DashboardSellerPageController()));
     } else {}
 
@@ -39,8 +39,8 @@ class HomePageController extends GetxController {
     if (managerCurrent!.role == "seller") {
       pages.addAll([
         DashboardSellerPage(),
-        MyProductPage(),
-        MyOrdersPage(),
+        MyProductSellerPage(),
+        MyOrdersSellerPage(),
         SupPage(
           color: ColorManager.blackColor,
         ),

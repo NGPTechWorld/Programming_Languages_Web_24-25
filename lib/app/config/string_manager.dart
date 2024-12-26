@@ -178,7 +178,16 @@ class StringManager {
   static const MyMarket = "MyMarket";
   static const MarketName = "MarketName";
 
- static const loading = "loading";
+  static const loading = "loading";
+  //My Order
+  static const name = "name";
+  static const quantity = "quantity";
+  static const cost = "cost";
+  static const price = "price";
+  static const total_cost = "total_cost";
+  static const products = "products";
+  static const DateOrder = "DateOrder";
+  static const salary = "salary";
   // Common in Orders pages
   // Order Details Page
   static const String orderDetailsHeader = "orderDetailsHeader";
