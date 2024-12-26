@@ -103,12 +103,41 @@ class OrderCard extends StatelessWidget {
           ),
           minVerticalPadding: AppPadding.p8,
           trailing: Container(
-            width: AppSizeScreen.screenWidth * 0.25,
+            width: AppSizeScreen.screenWidth * 0.3, // زيادة العرض
+            height: 350, // زيادة الارتفاع
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 StatusLabel(statusId: orderModel.statusId),
+                SizedBox(
+                  width: 30,
+                ),
+                orderModel.statusId == 1
+                    ? Container(
+                        decoration: BoxDecoration(
+                            color: ColorManager.primary2Color,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        child: Column(
+                          children: [
+                            Text(
+                              "choose status:",
+                              style: StyleManager.body02_Semibold(),
+                            ),
+                            Row(
+                              children: [
+                                StatusLabel(statusId: 4),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                StatusLabel(statusId: 3),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    : Container()
               ],
             ),
           ),

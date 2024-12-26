@@ -21,7 +21,7 @@ class MyProductSellerPageController extends GetxController {
 
   void addProduct() {
     productController.moniterMode.value = false;
-    homeController.indexPageSeller.value = 4;
+    homeController.indexPageSeller.value = 3;
   }
 
   void showProduct() {
@@ -45,7 +45,7 @@ class MyProductSellerPageController extends GetxController {
     productController.fillProduct(Product.fromJson(data));
     productController.myproduct = Product.fromJson(data);
     productController.moniterMode.value = true;
-    homeController.indexPageSeller.value = 4;
+    homeController.indexPageSeller.value = 3;
   }
 }
 

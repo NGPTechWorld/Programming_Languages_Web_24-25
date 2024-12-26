@@ -38,15 +38,6 @@ class SellerMenuCard extends GetView<HomePageController> {
             title: StringManager.MyOrders.tr,
           ),
         ),
-        InkWell(
-          onTap: () {
-            controller.gotToPage(3);
-          },
-          child: MenuCard(
-            icon: Icons.settings,
-            title: StringManager.Settings.tr,
-          ),
-        ),
       ],
     );
   }

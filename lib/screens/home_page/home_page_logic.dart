@@ -41,9 +41,6 @@ class HomePageController extends GetxController {
         DashboardSellerPage(),
         MyProductSellerPage(),
         MyOrdersSellerPage(),
-        SupPage(
-          color: ColorManager.blackColor,
-        ),
         AddProductPage(),
       ]);
     } else {
