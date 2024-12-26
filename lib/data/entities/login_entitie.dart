@@ -1,11 +1,9 @@
-
 import 'package:quick_delivery_admin/app/services/api/end_points.dart';
 
 class LoginEntitie {
   final String message;
   final String? bearerToken;
-  final int? id;
-  LoginEntitie({required this.message, this.bearerToken, this.id});
+  LoginEntitie({required this.message, this.bearerToken});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,7 +16,6 @@ class LoginEntitie {
     return LoginEntitie(
       message: map[ApiKey.message] as String,
       bearerToken: map[ApiKey.bearerToken] as String?,
-      id: map[ApiKey.id] as int?,
     );
   }
 }

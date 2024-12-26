@@ -47,19 +47,6 @@ class SellerMenuCard extends GetView<HomePageController> {
             title: StringManager.Settings.tr,
           ),
         ),
-        InkWell(
-          onTap: () {
-            controller.languageOnTap();
-          },
-          child: MenuCard(
-            icon: Icons.language,
-            title: StringManager.languageDialogTitle.tr,
-          ),
-        ),
-        MenuCard(
-          icon: Icons.logout,
-          title: StringManager.logout.tr,
-        ),
       ],
     );
   }

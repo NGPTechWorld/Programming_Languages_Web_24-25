@@ -14,19 +14,19 @@ class AdminMenuCard extends StatelessWidget {
         ),
         MenuCard(
           icon: Icons.store,
-          title: "Markets",
+          title: "My Markets",
         ),
         MenuCard(
           icon: Icons.category,
           title: "All Products",
         ),
         MenuCard(
-          icon: Icons.settings,
-          title: "Settings",
+          icon: Icons.delivery_dining,
+          title: "All Orders",
         ),
         MenuCard(
-          icon: Icons.logout,
-          title: "Log out",
+          icon: Icons.settings,
+          title: "Settings",
         ),
       ],
     );

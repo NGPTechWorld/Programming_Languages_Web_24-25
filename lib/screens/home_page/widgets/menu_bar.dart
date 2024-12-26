@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/assets_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+import 'package:quick_delivery_admin/data/cache/const.dart';
+import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
+import 'package:quick_delivery_admin/screens/home_page/widgets/admin_menu_card.dart';
+import 'package:quick_delivery_admin/screens/home_page/widgets/menu_card.dart';
 
 import 'package:quick_delivery_admin/screens/home_page/widgets/seller_menu_card.dart';
 
-class MenuBarCustom extends StatelessWidget {
+class MenuBarCustom extends GetView<HomePageController> {
   const MenuBarCustom({super.key});
 
   @override
@@ -35,7 +41,22 @@ class MenuBarCustom extends StatelessWidget {
               height: AppSizeScreen.screenHeight * 0.05,
             ),
             // AdminMenuCard(),
-            SellerMenuCard(),
+            managerCurrent!.role == "seller"
+                ? SellerMenuCard()
+                : AdminMenuCard(),
+            InkWell(
+              onTap: () {
+                controller.languageOnTap();
+              },
+              child: MenuCard(
+                icon: Icons.language,
+                title: StringManager.languageDialogTitle.tr,
+              ),
+            ),
+            MenuCard(
+              icon: Icons.logout,
+              title: StringManager.logout.tr,
+            ),
           ],
         ),
       ),

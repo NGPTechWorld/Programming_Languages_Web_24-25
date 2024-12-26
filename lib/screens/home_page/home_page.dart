@@ -10,6 +10,7 @@ class HomePage extends GetView<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchPages();
     return Scaffold(
       body: Row(
         children: [
@@ -19,7 +20,7 @@ class HomePage extends GetView<HomePageController> {
               //width: AppSizeScreen.screenWidth * 0.85,
               child: IndexedStack(
                 index: controller.indexPageSeller.value,
-                children: controller.pagesSeller,
+                children: controller.pages,
               ),
             ),
           ),

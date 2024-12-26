@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
+import 'package:quick_delivery_admin/data/cache/const.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
@@ -17,10 +18,12 @@ import 'package:quick_delivery_admin/screens/my_product_page/my_product_page_log
 class HomePageBinging extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => AddProductPageController());
-    Get.lazyPut(() => MyProductPageController());
-    Get.lazyPut(() => (MyOrdersPageController()));
-    Get.lazyPut(() => (DashboardSellerPageController()));
+    if (managerCurrent!.role == "seller") {
+      Get.lazyPut(() => AddProductPageController());
+      Get.lazyPut(() => MyProductPageController());
+      Get.lazyPut(() => (MyOrdersPageController()));
+      Get.lazyPut(() => (DashboardSellerPageController()));
+    } else {}
 
     Get.put(HomePageController());
   }
@@ -28,19 +31,35 @@ class HomePageBinging extends Bindings {
 
 class HomePageController extends GetxController {
   final cache = Get.find<CacheServicesSharedPreferences>();
-
   var loadingState = LoadingState.idle.obs;
   final indexPageSeller = 0.obs;
+  List<Widget> pages = [];
 
-  List<Widget> pagesSeller = [
-    DashboardSellerPage(),
-    MyProductPage(),
-    MyOrdersPage(),
-    SupPage(
-      color: ColorManager.blackColor,
-    ),
-    AddProductPage(),
-  ];
+  fetchPages() {
+    if (managerCurrent!.role == "seller") {
+      pages.addAll([
+        DashboardSellerPage(),
+        MyProductPage(),
+        MyOrdersPage(),
+        SupPage(
+          color: ColorManager.blackColor,
+        ),
+        AddProductPage(),
+      ]);
+    } else {
+      pages.addAll([
+        SupPage(
+          color: ColorManager.blackColor,
+        ),
+        SupPage(
+          color: ColorManager.blackColor,
+        ),
+        SupPage(
+          color: ColorManager.blackColor,
+        ),
+      ]);
+    }
+  }
 
   languageOnTap() {
     HelperWidget.languageDialgo();

@@ -41,15 +41,18 @@ class MyProductPage extends GetView<MyProductPageController> {
                           padding: const EdgeInsets.all(AppPadding.p10),
                           width: 200,
                           height: 300,
-                          child: GestureDetector(
-                            onTap: controller.addProduct,
-                            child: Card(
-                              color: ColorManager.primary3Color,
-                              child: Center(
-                                child: Icon(
-                                  Icons.add,
-                                  size: 50,
-                                  color: ColorManager.whiteColor,
+                          child: Padding(
+                            padding: const EdgeInsets.all(AppPadding.p10),
+                            child: GestureDetector(
+                              onTap: controller.addProduct,
+                              child: Card(
+                                color: ColorManager.primary3Color,
+                                child: Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 50,
+                                    color: ColorManager.whiteColor,
+                                  ),
                                 ),
                               ),
                             ),
