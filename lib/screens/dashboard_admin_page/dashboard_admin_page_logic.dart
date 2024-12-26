@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
-class DashboardSellerPageController extends GetxController {
+class DashboardAdminPageController extends GetxController {
   final homeController = Get.find<HomePageController>();
 
   var products = <ProductsCardEntite>[
@@ -13,7 +13,6 @@ class DashboardSellerPageController extends GetxController {
     ProductsCardEntite.fromJson(dataProductTemp),
     ProductsCardEntite.fromJson(dataProductTemp),
   ];
- 
 }
 
 final dataProductTemp = {

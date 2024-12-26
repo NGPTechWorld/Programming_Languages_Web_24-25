@@ -5,6 +5,7 @@ class StringManager {
   static const EnterName = "EnterName";
   static const EnterPassword = "EnterPassword";
   static const Enter = "Enter";
+
   //Upload Image
   static const titleUploadPicture = "titleUploadPicture";
   static const subTitleUploadPicture = "subTitleUploadPicture";
@@ -211,4 +212,6 @@ class StringManager {
   static const String forgotPassowrdEmailVerificationsubTitle =
       "forgotPassowrdEmailVerificationsubTitle";
   static const String forgotPassowrdVerify = "forgotPassowrdVerify";
+  //Admin
+  static const AllProduct = "AllProduct";
 }

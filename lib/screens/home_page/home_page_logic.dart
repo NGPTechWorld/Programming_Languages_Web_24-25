@@ -6,10 +6,18 @@ import 'package:quick_delivery_admin/data/cache/const.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/all_products_page/all_products_page.dart';
+import 'package:quick_delivery_admin/screens/all_products_page/all_products_page_logic.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/helper_widget.dart';
+import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page.dart';
+import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page_logic.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
+import 'package:quick_delivery_admin/screens/my_market_page/my_market_page.dart';
+import 'package:quick_delivery_admin/screens/my_market_page/my_market_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_orders_admin_page/my_orders_admin_page.dart';
+import 'package:quick_delivery_admin/screens/my_orders_admin_page/my_orders_admin_page_logic.dart';
 import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page.dart';
 import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page.dart';
@@ -23,7 +31,12 @@ class HomePageBinging extends Bindings {
       Get.lazyPut(() => MyProductSellerPageController());
       Get.lazyPut(() => (MyOrdersSellerPageController()));
       Get.lazyPut(() => (DashboardSellerPageController()));
-    } else {}
+    } else {
+      Get.lazyPut(() => (DashboardAdminPageController()));
+      Get.lazyPut(() => (MyMarketPageController()));
+      Get.lazyPut(() => (AllProductsPageController()));
+      Get.lazyPut(() => (MyOrdersAdminPageController()));
+    }
 
     Get.put(HomePageController());
   }
@@ -45,12 +58,10 @@ class HomePageController extends GetxController {
       ]);
     } else {
       pages.addAll([
-        SupPage(
-          color: ColorManager.blackColor,
-        ),
-        SupPage(
-          color: ColorManager.blackColor,
-        ),
+        DashboardAdminPage(),
+        MyMarketPage(),
+        AllProductsPage(),
+        MyOrdersAdminPage(),
         SupPage(
           color: ColorManager.blackColor,
         ),

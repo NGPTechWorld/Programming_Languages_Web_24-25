@@ -25,7 +25,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(),
               MyMarketInfo(),

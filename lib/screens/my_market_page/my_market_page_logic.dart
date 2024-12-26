@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
-import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
-class DashboardSellerPageController extends GetxController {
-  final homeController = Get.find<HomePageController>();
+class MyMarketPageController extends GetxController {
+  final searchController = TextEditingController();
 
   var products = <ProductsCardEntite>[
     ProductsCardEntite.fromJson(dataProductTemp),
@@ -12,8 +12,8 @@ class DashboardSellerPageController extends GetxController {
     ProductsCardEntite.fromJson(dataProductTemp),
     ProductsCardEntite.fromJson(dataProductTemp),
     ProductsCardEntite.fromJson(dataProductTemp),
+    ProductsCardEntite.fromJson(dataProductTemp),
   ];
- 
 }
 
 final dataProductTemp = {
@@ -23,7 +23,7 @@ final dataProductTemp = {
   "name_ar": "كعكة شوكولا",
   "quantity": 1,
   "price": 10000,
-  "image": "ss/s",
+  "image": "/",
   "description_en": "for birthdays",
   "description_ar": "من اجل اعياد الميلاد",
   "number_of_purchases": 1,
@@ -31,11 +31,4 @@ final dataProductTemp = {
   "updated_at": "2024-12-18T12:08:03.000000Z",
   "category_en": "Food and Drinks",
   "category_ar": "أطعمة ومشروبات"
-};
-
-final datatempStat = {
-  "message": "statistics get successfully",
-  "number_of_products": 2,
-  "number_of_orders": 1,
-  "salary": 20000
 };

@@ -3,18 +3,18 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
-import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page_logic.dart';
-import 'package:quick_delivery_admin/screens/my_orders_seller_page/widgets/order_card.dart';
+import 'package:quick_delivery_admin/screens/all_products_page/all_products_page_logic.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/product_item_card.dart';
 
-class MyOrdersSellerPage extends GetView<MyOrdersSellerPageController> {
-  const MyOrdersSellerPage({super.key});
+class AllProductsPage extends GetView<AllProductsPageController> {
+  const AllProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          StringManager.MyOrders.tr,
+          StringManager.AllProduct.tr,
           style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,
@@ -26,12 +26,16 @@ class MyOrdersSellerPage extends GetView<MyOrdersSellerPageController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Container()),
               Wrap(
                 spacing: 16.0,
                 runSpacing: 16.0,
                 children: List.generate(
-                  controller.order.length,
-                  (index) => OrderCard(orderModel: controller.order[index]),
+                  controller.products.length,
+                  (index) =>
+                      ProductItemCard(product: controller.products[index]),
                 ),
               ),
             ],

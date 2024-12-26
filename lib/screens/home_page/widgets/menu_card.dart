@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+import 'package:quick_delivery_admin/data/cache/const.dart';
 
 class MenuCard extends StatefulWidget {
   final IconData icon;
@@ -23,13 +24,17 @@ class _MenuCardState extends State<MenuCard> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovering = true), 
-      onExit: (_) => setState(() => _isHovering = false), 
+      onEnter: (_) => setState(() => _isHovering = true),
+      onExit: (_) => setState(() => _isHovering = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200), 
+        duration: const Duration(milliseconds: 200),
         color: _isHovering
-            ? ColorManager.firstColor
-            : ColorManager.secoundDarkColor, 
+            ? managerCurrent!.role == "seller"
+                ? ColorManager.secoundColor
+                : ColorManager.firstColor
+            : managerCurrent!.role == "seller"
+                ? ColorManager.secoundDarkColor
+                : ColorManager.firstDarkColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,

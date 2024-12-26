@@ -19,7 +19,9 @@ class MenuBarCustom extends GetView<HomePageController> {
     return Container(
       height: AppSizeScreen.screenHeight,
       width: AppSizeScreen.screenWidth * 0.15,
-      color: ColorManager.secoundDarkColor,
+      color: managerCurrent!.role == "seller"
+          ? ColorManager.secoundDarkColor
+          : ColorManager.firstDarkColor,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -37,6 +39,7 @@ class MenuBarCustom extends GetView<HomePageController> {
                 ),
               ),
             ),
+
             SizedBox(
               height: AppSizeScreen.screenHeight * 0.05,
             ),
