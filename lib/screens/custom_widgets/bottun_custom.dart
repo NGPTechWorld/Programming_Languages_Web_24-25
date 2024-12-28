@@ -9,6 +9,7 @@ class BottouCustom extends StatelessWidget {
   final Color textColor;
   final String text;
   final width;
+  final bool? loading;
   final borderRadius;
   const BottouCustom(
       {super.key,
@@ -17,7 +18,8 @@ class BottouCustom extends StatelessWidget {
       this.background = ColorManager.secoundColor,
       this.textColor = ColorManager.blackColor,
       this.width,
-      this.borderRadius});
+      this.borderRadius,
+      required this.loading});
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +34,23 @@ class BottouCustom extends StatelessWidget {
                 BorderRadius.circular(borderRadius == null ? 40 : borderRadius),
             color: background,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-                child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                text,
-                style: StyleManager.button1(color: textColor),
-              ),
-            )),
-          ),
+          child: loading == true
+              ? Center(
+                  child: const CircularProgressIndicator(
+                    color: ColorManager.whiteColor,
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                      child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      text,
+                      style: StyleManager.button1(color: textColor),
+                    ),
+                  )),
+                ),
         ));
   }
 }

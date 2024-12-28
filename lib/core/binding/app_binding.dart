@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/data/repositories/manager_repositories.dart';
 import '../../app/services/local_storage/cache_service_getstorage.dart';
 import '../../screens/start_page/start_page_logic.dart';
 import '/app/services/api/dio_consumer.dart';
@@ -11,6 +12,7 @@ class AppBinding implements Bindings {
     Get.put(CacheServiceGetStorage());
     Get.put(DioConsumer(dio: Dio()));
     //Get.put(ImpUsersRepositories(api: Get.find<DioConsumer>()));
+    Get.put(ImpTManagerRepositories(api: Get.find<DioConsumer>()));
     Get.put(StartPageBinging()).dependencies();
   }
 

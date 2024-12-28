@@ -2,8 +2,8 @@
 class ManagerModel {
   final int id;
   final String name;
-  final String market_name_en;
-  final String market_name_ar;
+  final String? market_name_en;
+  final String? market_name_ar;
   final String role;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -13,8 +13,8 @@ class ManagerModel {
     required this.role,
     required this.createdAt,
     required this.updatedAt,
-    required this.market_name_en,
-    required this.market_name_ar,
+    this.market_name_en,
+    this.market_name_ar,
   });
 
   factory ManagerModel.fromJson(Map<String, dynamic> json) {

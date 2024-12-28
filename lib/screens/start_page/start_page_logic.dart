@@ -6,8 +6,12 @@ import 'package:quick_delivery_admin/data/entities/marcket_statistics.dart';
 import 'package:quick_delivery_admin/data/enums/app_state_enum.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/manager_model.dart';
+import 'package:quick_delivery_admin/data/repositories/manager_repositories.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
+import 'package:quick_delivery_admin/screens/login_page/login_page.dart';
+import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
 
 class StartPageBinging extends Bindings {
   @override
@@ -18,46 +22,58 @@ class StartPageBinging extends Bindings {
 
 class StartPageController extends GetxController {
   final isConnectedPage = true.obs;
-  //final AuthRepositories = Get.find<ImpUsersRepositories>();
+  final managerRepositories = Get.find<ImpTManagerRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
   var loadingState = LoadingState.idle.obs;
   var appState = AppState.run.obs;
 
-  startApp() {
-    // if (await cache.getUserToken() == null) {
-    //   //Get.off(LoginPage(), binding: LoginPageBinding());
-
-    // } else {}
-    //TODO: Get Manager info
-    final tempData = {
-      "id": 2,
-      "name": "Harry Potter",
-      "role": "seller",
-      "created_at": "2024-12-18T09:37:18.000000Z",
-      "updated_at": "2024-12-18T09:37:18.000000Z",
-      "market_name_en": "be order",
-      "market_name_ar": "بي اوردر"
-    };
-    final tempStat = {
-      "message": "statistics get seccessfully",
-      "number_of_products": 2,
-      "number_of_orders": 2,
-      "salary": 20000
-    };
-    final datatempAppStat = {
-      "message": "statistics get seccessfully",
-      "number_of_products": 2,
-      "number_of_markets": 3,
-      "number_of_orders": 2
-    };
-
-    managerCurrent = ManagerModel.fromJson(tempData);
-    if (managerCurrent!.role == "seller") {
-      marcketStatistics = MarcketStatistics.fromJson(tempStat);
+  startApp() async {
+    print("object");
+    if (await cache.getUserToken() == null) {
+      Get.off(LoginPage(), binding: LoginPageBinding());
     } else {
-      appStatistics = AppStatistics.fromJson(datatempAppStat);
-    }
+      final tempStat = {
+        "message": "statistics get seccessfully",
+        "number_of_products": 2,
+        "number_of_orders": 2,
+        "salary": 20000
+      };
+      final datatempAppStat = {
+        "message": "statistics get seccessfully",
+        "number_of_products": 2,
+        "number_of_markets": 3,
+        "number_of_orders": 2
+      };
 
-    Get.off(HomePage(), binding: HomePageBinging());
+      await currentManager();
+      if (managerCurrent!.role == "seller") {
+        marcketStatistics = MarcketStatistics.fromJson(tempStat);
+      } else {
+        appStatistics = AppStatistics.fromJson(datatempAppStat);
+      }
+
+      Get.off(HomePage(), binding: HomePageBinging());
+    }
+  }
+
+  currentManager() async {
+    final response = await managerRepositories.currentManager();
+    print(response.data);
+    if (response.success) {
+      managerCurrent = response.data;
+    } else {
+      if (response.networkFailure!.code == 401) {
+        cache.clearData();
+        Get.off(LoginPage(), binding: LoginPageBinding());
+      }
+    }
   }
 }
+
+final tempData = {
+  "id": 2,
+  "name": "Harry Potter",
+  "role": "seller",
+  "created_at": "2024-12-18T09:37:18.000000Z",
+  "updated_at": "2024-12-18T09:37:18.000000Z"
+};

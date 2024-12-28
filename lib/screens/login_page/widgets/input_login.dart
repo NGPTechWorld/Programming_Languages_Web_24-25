@@ -5,6 +5,7 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/bottun_custom.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/text_field_custom.dart';
 import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
@@ -47,12 +48,15 @@ class InputLogin extends GetView<LoginPageController> {
           SizedBox(
             height: AppSizeScreen.screenHeight * 0.01,
           ),
-          BottouCustom(
-            function: () {
-              controller.login(context);
-            },
-            text: StringManager.Enter.tr,
-            textColor: ColorManager.whiteColor,
+          Obx(
+            ()=> BottouCustom(
+              function: () {
+                controller.login(context);
+              },
+              text: StringManager.Enter.tr,
+              textColor: ColorManager.whiteColor,
+              loading: controller.loadingState.value== LoadingState.loading,
+            ),
           )
         ],
       ),

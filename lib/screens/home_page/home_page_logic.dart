@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:quick_delivery_admin/data/cache/const.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
+import 'package:quick_delivery_admin/data/module/manager_model.dart';
+import 'package:quick_delivery_admin/data/repositories/manager_repositories.dart';
 import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page.dart';
 import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page_logic.dart';
 import 'package:quick_delivery_admin/screens/add_market_page/add_market_page.dart';
@@ -57,7 +59,7 @@ class HomePageController extends GetxController {
   var loadingState = LoadingState.idle.obs;
   final indexPageSeller = 0.obs;
   List<Widget> pages = [];
-
+  final managerRepositories = Get.find<ImpTManagerRepositories>();
   fetchPages() {
     if (managerCurrent!.role == "seller") {
       pages.addAll([
@@ -98,7 +100,14 @@ class HomePageController extends GetxController {
     indexPageSeller.value = indexPage;
   }
 
-  logout(){
-    
+  logout() {}
+  currentManager() async {
+    final response = await managerRepositories.currentManager();
+    if (response.success) {
+      managerCurrent = response.data as ManagerModel;
+      loadingState = LoadingState.doneWithData.obs;
+    } else {
+      loadingState = LoadingState.hasError.obs;
+    }
   }
 }

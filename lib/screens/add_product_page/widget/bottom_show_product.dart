@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/bottun_custom.dart';
 
@@ -25,6 +26,7 @@ class BottomShowProduct extends GetView<AddProductPageController> {
               textColor: ColorManager.primary6Color,
               background: ColorManager.primary1Color,
               borderRadius: 15,
+              loading: false,
             ),
           ),
           SizedBox(
@@ -40,6 +42,8 @@ class BottomShowProduct extends GetView<AddProductPageController> {
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.firstDarkColor,
                       borderRadius: 15,
+                      loading:
+                          controller.loadingState.value == LoadingState.loading,
                     )
                   : BottouCustom(
                       function: () {},
@@ -47,6 +51,8 @@ class BottomShowProduct extends GetView<AddProductPageController> {
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.secoundColor,
                       borderRadius: 15,
+                      loading:
+                          controller.loadingState.value == LoadingState.loading,
                     ),
             ),
           ),

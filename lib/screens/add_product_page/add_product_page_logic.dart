@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker_web/image_picker_web.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
@@ -25,7 +26,7 @@ class AddProductPageController extends GetxController {
   RxInt selectedCategory = 1.obs;
   Rx<String> imageSelectedPath = ''.obs;
   Rx<Uint8List?> imageBytes = Rx<Uint8List?>(null);
-
+  var loadingState = LoadingState.idle.obs;
   var categories = [
     {'id': 1, 'name': 'Category 1'},
     {'id': 2, 'name': 'Category 2'},
@@ -51,9 +52,7 @@ class AddProductPageController extends GetxController {
     //selectedCategory.
   }
 
-  void saveProduct() {
-
-  }
+  void saveProduct() {}
 
   void calnsel() {
     clearData();

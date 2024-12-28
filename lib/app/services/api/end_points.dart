@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.8:8000/api";
+  static const String baserUrl = "http://192.168.1.11:8000/api";
 
   //Admin
   static const String addMarket = "/admins/addMarket";
@@ -30,6 +30,7 @@ class EndPoints {
   static const String refreshTokenManager = "/managers/refreshToken";
   static const String resetPasswordManager = "/managers/resetPassword";
   static const String checkTokenManager = "/managers/checkToken";
+  static const String currentManager = "/managers/currentManager";
 
   //Seller
   static const String addProductSeller = "/sellers/addProduct";

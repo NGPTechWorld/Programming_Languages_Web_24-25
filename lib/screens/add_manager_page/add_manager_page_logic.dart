@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
 class AddManagerPageController extends GetxController {
@@ -8,7 +9,7 @@ class AddManagerPageController extends GetxController {
   final password_confirmation_Controller = TextEditingController();
 
   final homeController = Get.find<HomePageController>();
-
+  var loadingState = LoadingState.idle.obs;
   final isVisablePass = true.obs;
   final isVisableConfPass = true.obs;
 
