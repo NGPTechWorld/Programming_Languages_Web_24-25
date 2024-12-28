@@ -4,7 +4,7 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/my_orders_admin_page/my_orders_admin_page_logic.dart';
-import 'package:quick_delivery_admin/screens/my_orders_seller_page/widgets/order_card.dart';
+import 'package:quick_delivery_admin/screens/my_orders_admin_page/widgets/order_card_admin.dart';
 
 class MyOrdersAdminPage extends GetView<MyOrdersAdminPageController> {
   const MyOrdersAdminPage({super.key});
@@ -31,7 +31,8 @@ class MyOrdersAdminPage extends GetView<MyOrdersAdminPageController> {
                 runSpacing: 16.0,
                 children: List.generate(
                   controller.order.length,
-                  (index) => OrderCard(orderModel: controller.order[index]),
+                  (index) =>
+                      OrderCardAdmin(orderModel: controller.order[index]),
                 ),
               ),
             ],

@@ -1,6 +1,6 @@
 class ProductsCardEntite {
   final int id;
-  final int marketId;
+  final int? marketId;
   final String nameEn;
   final String nameAr;
   final int quantity;
@@ -13,10 +13,12 @@ class ProductsCardEntite {
   final DateTime updatedAt;
   final String categoryEn;
   final String categoryAr;
+  final String? market_name_en;
+  final String? market_name_ar;
 
   ProductsCardEntite({
     required this.id,
-    required this.marketId,
+    this.marketId,
     required this.nameEn,
     required this.nameAr,
     required this.quantity,
@@ -29,6 +31,8 @@ class ProductsCardEntite {
     required this.updatedAt,
     required this.categoryEn,
     required this.categoryAr,
+    this.market_name_en,
+    this.market_name_ar,
   });
 
   factory ProductsCardEntite.fromJson(Map<String, dynamic> json) {
@@ -47,6 +51,8 @@ class ProductsCardEntite {
       updatedAt: DateTime.parse(json['updated_at']),
       categoryEn: json['category_en'],
       categoryAr: json['category_ar'],
+      market_name_en: json['market_name_en'],
+      market_name_ar: json['market_name_ar'],
     );
   }
 
@@ -66,6 +72,8 @@ class ProductsCardEntite {
       'updated_at': updatedAt.toIso8601String(),
       'category_en': categoryEn,
       'category_ar': categoryAr,
+      'market_name_en': market_name_en,
+      'market_name_ar': market_name_ar,
     };
   }
 }

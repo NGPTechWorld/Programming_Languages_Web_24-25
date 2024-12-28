@@ -31,7 +31,7 @@ class StartPageController extends GetxController {
     final tempData = {
       "id": 2,
       "name": "Harry Potter",
-      "role": "seller",
+      "role": "admin",
       "created_at": "2024-12-18T09:37:18.000000Z",
       "updated_at": "2024-12-18T09:37:18.000000Z",
       "market_name_en": "be order",

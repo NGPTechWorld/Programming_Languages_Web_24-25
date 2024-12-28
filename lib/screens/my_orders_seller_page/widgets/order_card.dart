@@ -39,20 +39,16 @@ class OrderCard extends StatelessWidget {
               Container(
                 width: double.infinity,
                 child: Column(
-                  children: List.generate(
-                    orderModel.products.length,
-                    (index) => Row(
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           flex: 4,
                           child: Center(
                             child: Text(
-                              StringManager.name.tr +
-                                  (Get.locale.toString() == "ar"
-                                      ? orderModel.products[index].nameAr
-                                      : orderModel.products[index].nameEn),
-                              style: StyleManager.body01_Regular(),
+                              StringManager.name.tr,
+                              style: StyleManager.body02_Semibold(),
                             ),
                           ),
                         ),
@@ -60,10 +56,8 @@ class OrderCard extends StatelessWidget {
                           flex: 4,
                           child: Center(
                             child: Text(
-                              StringManager.quantity.tr +
-                                  orderModel.products[index].quantity
-                                      .toString(),
-                              style: StyleManager.body01_Regular(),
+                              StringManager.quantity.tr,
+                              style: StyleManager.body02_Semibold(),
                             ),
                           ),
                         ),
@@ -71,9 +65,8 @@ class OrderCard extends StatelessWidget {
                           flex: 4,
                           child: Center(
                             child: Text(
-                              StringManager.price.tr +
-                                  orderModel.products[index].price.toString(),
-                              style: StyleManager.body01_Regular(),
+                              StringManager.price.tr,
+                              style: StyleManager.body02_Semibold(),
                             ),
                           ),
                         ),
@@ -81,15 +74,63 @@ class OrderCard extends StatelessWidget {
                           flex: 4,
                           child: Center(
                             child: Text(
-                              StringManager.cost.tr +
-                                  orderModel.products[index].cost.toString(),
-                              style: StyleManager.body01_Regular(),
+                              StringManager.cost.tr,
+                              style: StyleManager.body02_Semibold(),
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
+                    Column(
+                      children: List.generate(
+                        orderModel.products.length,
+                        (index) => Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Center(
+                                child: Text(
+                                  (Get.locale.toString() == "ar"
+                                      ? orderModel.products[index].nameAr
+                                      : orderModel.products[index].nameEn),
+                                  style: StyleManager.body01_Regular(),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Center(
+                                child: Text(
+                                  orderModel.products[index].quantity
+                                      .toString(),
+                                  style: StyleManager.body01_Regular(),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Center(
+                                child: Text(
+                                  orderModel.products[index].price.toString(),
+                                  style: StyleManager.body01_Regular(),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 4,
+                              child: Center(
+                                child: Text(
+                                  orderModel.products[index].cost.toString(),
+                                  style: StyleManager.body01_Regular(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(

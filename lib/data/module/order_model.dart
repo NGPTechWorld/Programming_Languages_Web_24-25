@@ -6,7 +6,7 @@ class OrderModel {
   final String date;
   final int statusId;
   final int totalCost;
-
+  
   OrderModel({
     required this.id,
     required this.products,
