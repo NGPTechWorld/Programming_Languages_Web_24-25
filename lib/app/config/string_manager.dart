@@ -221,4 +221,9 @@ class StringManager {
   static const MarketNameAr = "MarketNameAr";
   static const MarketNameEn = "MarketNameEn";
   static const EditMarket = "EditMarket";
+  static const number_of_products = "number_of_products";
+  static const number_of_markets = "number_of_markets";
+  static const number_of_orders = "number_of_orders";
+  static const AddManager = "AddManager";
+  static const AllProductsMarkect = "AllProductsMarkect";
 }

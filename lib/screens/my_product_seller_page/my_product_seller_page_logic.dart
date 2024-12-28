@@ -24,7 +24,8 @@ class MyProductSellerPageController extends GetxController {
     homeController.indexPageSeller.value = 3;
   }
 
-  void showProduct() {
+  delete(ProductsCardEntite product) {}
+  void showProduct(ProductsCardEntite product) {
     final data = {
       "id": 3,
       "market_id": 3,

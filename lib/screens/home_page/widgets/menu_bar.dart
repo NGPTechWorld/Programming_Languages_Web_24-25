@@ -19,7 +19,7 @@ class MenuBarCustom extends GetView<HomePageController> {
     return Container(
       height: AppSizeScreen.screenHeight,
       width: AppSizeScreen.screenWidth * 0.15,
-      color: managerCurrent!.role == "seller"
+      color: managerCurrent!.role == "admin"
           ? ColorManager.secoundDarkColor
           : ColorManager.firstDarkColor,
       child: SingleChildScrollView(

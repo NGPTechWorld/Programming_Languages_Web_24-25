@@ -3,22 +3,32 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
-import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page_logic.dart';
-import 'package:quick_delivery_admin/screens/dashboard_admin_page/widgets/my_admin_info.dart';
-import 'package:quick_delivery_admin/screens/dashboard_seller_page/widgets/top_product_item.dart';
+import 'package:quick_delivery_admin/screens/all_products_market_page/all_products_market_page_logic.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/product_item_card.dart';
 
-class DashboardAdminPage extends GetView<DashboardAdminPageController> {
-  const DashboardAdminPage({super.key});
+class AllProductsMarketPage extends GetView<AllProductsMarketPageController> {
+  const AllProductsMarketPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          StringManager.Dashboard.tr,
+          StringManager.AllProductsMarkect.tr,
           style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconButton(
+            onPressed: () {
+              controller.back();
+            },
+            color: ColorManager.primary6Color,
+            icon: Icon(Icons.arrow_back),
+          ),
+        ),
+        actions: [],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -27,22 +37,16 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(),
-              MyAdminInfo(),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                StringManager.TopSellerProduct.tr,
-                style: StyleManager.h2_Bold(),
-              ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Container()),
               Wrap(
                 spacing: 16.0,
                 runSpacing: 16.0,
                 children: List.generate(
                   controller.products.length,
                   (index) =>
-                      TopProductItem(product: controller.products[index]),
+                      ProductItemCard(product: controller.products[index]),
                 ),
               ),
             ],

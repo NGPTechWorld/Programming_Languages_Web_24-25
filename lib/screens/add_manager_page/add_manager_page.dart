@@ -3,25 +3,20 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
-import 'package:quick_delivery_admin/screens/add_market_page/add_market_page_logic.dart';
-import 'package:quick_delivery_admin/screens/add_market_page/widget/bottom_show_market.dart';
-import 'package:quick_delivery_admin/screens/add_market_page/widget/input_market.dart';
-import 'package:quick_delivery_admin/screens/add_market_page/widget/upload_image_market.dart';
+import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page_logic.dart';
+import 'package:quick_delivery_admin/screens/add_manager_page/widget/bottom_show_marager.dart';
+import 'package:quick_delivery_admin/screens/add_manager_page/widget/input_marager.dart';
 
-class AddMarketPage extends GetView<AddMarketPageController> {
-  const AddMarketPage({super.key});
+class AddManagerPage extends GetView<AddManagerPageController> {
+  const AddManagerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Obx(
-          () => Text(
-            controller.moniterMode.value
-                ? StringManager.EditMarket.tr
-                : StringManager.AddMarket.tr,
-            style: StyleManager.h2_Bold(),
-          ),
+        title: Text(
+          StringManager.AddManager.tr,
+          style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,
       ),
@@ -35,9 +30,7 @@ class AddMarketPage extends GetView<AddMarketPageController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InputMarket(),
-                  SizedBox(width: 50),
-                  UploadImageMarket()
+                  InputMarager(),
                 ],
               ),
               SizedBox(height: 20),
@@ -45,7 +38,7 @@ class AddMarketPage extends GetView<AddMarketPageController> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomShowMarket(),
+      bottomNavigationBar: BottomShowManager(),
     );
   }
 }

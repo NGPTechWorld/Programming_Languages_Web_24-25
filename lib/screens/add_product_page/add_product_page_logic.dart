@@ -52,13 +52,7 @@ class AddProductPageController extends GetxController {
   }
 
   void saveProduct() {
-    String nameEN = nameENController.text;
-    String nameAR = nameARController.text;
-    String descEN = descENController.text;
-    String descAR = descARController.text;
-    String price = priceController.text;
-    String quantity = quantityController.text;
-    int categoryId = selectedCategory.value;
+
   }
 
   void calnsel() {

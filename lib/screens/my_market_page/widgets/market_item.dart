@@ -5,10 +5,10 @@ import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/entities/Market_card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
-import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
+import 'package:quick_delivery_admin/screens/my_market_page/my_market_page_logic.dart';
 
 // ignore: must_be_immutable
-class MarketItem extends GetView<MyProductSellerPageController> {
+class MarketItem extends GetView<MyMarketPageController> {
   MarketCardEntite market;
   MarketItem({super.key, required this.market});
 
@@ -16,8 +16,7 @@ class MarketItem extends GetView<MyProductSellerPageController> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Get.to(ProductDetailsPage(product.id));
-        controller.showProduct();
+        controller.goToMarket(market);
       },
       child: Container(
         width: 400,
@@ -93,16 +92,22 @@ class MarketItem extends GetView<MyProductSellerPageController> {
               end: 0,
               child: Column(
                 children: [
-                  CircleItem(
+                  IconButton(
+                    onPressed: () {
+                      controller.showProduct(market);
+                    },
                     color: ColorManager.firstDarkColor,
-                    icon: Icons.edit,
+                    icon: Icon(Icons.edit),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  CircleItem(
+                  IconButton(
+                    onPressed: () {
+                      controller.delete(market);
+                    },
                     color: ColorManager.redColor,
-                    icon: Icons.delete,
+                    icon: Icon(Icons.delete),
                   ),
                 ],
               ),

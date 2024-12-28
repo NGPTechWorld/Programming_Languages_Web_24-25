@@ -17,10 +17,6 @@ class ProductItem extends GetView<MyProductSellerPageController> {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
       child: InkWell(
-        onTap: () {
-          // Get.to(ProductDetailsPage(product.id));
-          controller.showProduct();
-        },
         child: Container(
           width: 200,
           //height: 300,
@@ -101,16 +97,22 @@ class ProductItem extends GetView<MyProductSellerPageController> {
                 end: 0,
                 child: Column(
                   children: [
-                    CircleItem(
+                    IconButton(
+                      onPressed: () {
+                        controller.showProduct(product);
+                      },
                       color: ColorManager.firstDarkColor,
-                      icon: Icons.edit,
+                      icon: Icon(Icons.edit),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    CircleItem(
+                    IconButton(
+                      onPressed: () {
+                        controller.delete(product);
+                      },
                       color: ColorManager.redColor,
-                      icon: Icons.delete,
+                      icon: Icon(Icons.delete),
                     ),
                   ],
                 ),

@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
-import 'package:quick_delivery_admin/data/module/product_model.dart';
-import 'package:quick_delivery_admin/screens/add_market_page/add_market_page_logic.dart';
+import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page_logic.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/text_field_custom.dart';
 
-class InputDesrpMarket extends GetView<AddMarketPageController> {
-  const InputDesrpMarket({
+class InputMarager extends GetView<AddManagerPageController> {
+  const InputMarager({
     super.key,
   });
 
@@ -27,18 +26,6 @@ class InputDesrpMarket extends GetView<AddMarketPageController> {
           SizedBox(height: 10),
           Text(
             StringManager.MarketNameAr.tr,
-            style: StyleManager.h4_Medium(),
-          ),
-          TextFieldCustom(controller: controller.market_name_ar_Controller),
-          SizedBox(height: 10),
-          Text(
-            StringManager.MarketNameEn.tr,
-            style: StyleManager.h4_Medium(),
-          ),
-          TextFieldCustom(controller: controller.market_name_en_Controller),
-          SizedBox(height: 10),
-          Text(
-            StringManager.password.tr,
             style: StyleManager.h4_Medium(),
           ),
           Obx(

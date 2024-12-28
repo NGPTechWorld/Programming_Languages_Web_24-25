@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:quick_delivery_admin/data/cache/const.dart';
+import 'package:quick_delivery_admin/data/entities/app_statistics.dart';
 import 'package:quick_delivery_admin/data/entities/marcket_statistics.dart';
 import 'package:quick_delivery_admin/data/enums/app_state_enum.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
@@ -43,8 +44,20 @@ class StartPageController extends GetxController {
       "number_of_orders": 2,
       "salary": 20000
     };
-    marcketStatistics = MarcketStatistics.fromJson(tempStat);
+    final datatempAppStat = {
+      "message": "statistics get seccessfully",
+      "number_of_products": 2,
+      "number_of_markets": 3,
+      "number_of_orders": 2
+    };
+
     managerCurrent = ManagerModel.fromJson(tempData);
+    if (managerCurrent!.role == "seller") {
+      marcketStatistics = MarcketStatistics.fromJson(tempStat);
+    } else {
+      appStatistics = AppStatistics.fromJson(datatempAppStat);
+    }
+
     Get.off(HomePage(), binding: HomePageBinging());
   }
 }

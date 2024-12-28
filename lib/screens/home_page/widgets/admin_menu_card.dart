@@ -56,10 +56,7 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.AllOrders.tr,
           ),
         ),
-        MenuCard(
-          icon: Icons.settings,
-          title: StringManager.Settings.tr,
-        ),
+  
       ],
     );
   }

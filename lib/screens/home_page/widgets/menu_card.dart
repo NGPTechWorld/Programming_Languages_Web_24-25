@@ -29,10 +29,10 @@ class _MenuCardState extends State<MenuCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         color: _isHovering
-            ? managerCurrent!.role == "seller"
+            ? managerCurrent!.role == "admin"
                 ? ColorManager.secoundColor
                 : ColorManager.firstColor
-            : managerCurrent!.role == "seller"
+            : managerCurrent!.role == "admin"
                 ? ColorManager.secoundDarkColor
                 : ColorManager.firstDarkColor,
         child: Row(
