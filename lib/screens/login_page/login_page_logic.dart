@@ -23,7 +23,7 @@ class LoginPageBinding extends Bindings {
 class LoginPageController extends GetxController {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
-  final managerRepositories = Get.find<ImpTManagerRepositories>();
+  final managerRepositories = Get.find<ImpManagerRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
   var loadingState = LoadingState.idle.obs;
   final isVisablePass = true.obs;

@@ -22,7 +22,7 @@ class StartPageBinging extends Bindings {
 
 class StartPageController extends GetxController {
   final isConnectedPage = true.obs;
-  final managerRepositories = Get.find<ImpTManagerRepositories>();
+  final managerRepositories = Get.find<ImpManagerRepositories>();
   final cache = Get.find<CacheServicesSharedPreferences>();
   var loadingState = LoadingState.idle.obs;
   var appState = AppState.run.obs;

@@ -1,13 +1,15 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/api/api_response_model.dart';
 import 'package:quick_delivery_admin/app/services/api/api_services.dart';
 import 'package:quick_delivery_admin/app/services/api/dio_consumer.dart';
 import 'package:quick_delivery_admin/app/services/api/end_points.dart';
 import 'package:quick_delivery_admin/core/errors/error_handler.dart';
+import 'package:quick_delivery_admin/screens/add_product_page/widget/upload_image.dart';
 
 abstract class TestRepositories {
-  Future<AppResponse> addProductSeller(
+  Future<AppResponse> addProduct(
       {required String name_en,
       required String name_ar,
       required int category_id,
@@ -15,7 +17,27 @@ abstract class TestRepositories {
       required int price,
       required String description_en,
       required String description_ar});
-  Future<AppResponse> test({required String test});
+  Future<AppResponse> uploadImage({required FormData image});
+  Future<AppResponse> uploadImageProduct({required FormData image});
+  Future<AppResponse> editProduct(
+      {required String name_en,
+      required String name_ar,
+      required String category_id,
+      required String quantity,
+      required String price,
+      required String description_en,
+      required String description_ar});
+  Future<AppResponse> completeOrder({required int id});
+  Future<AppResponse> rejectOrder({required int id});
+  Future<AppResponse> deleteProduct({required int id});
+  Future<AppResponse> deleteProductImage({required int id});
+  Future<AppResponse> deleteImage();
+  Future<AppResponse> getProducts();
+  Future<AppResponse> getTopProducts();
+  Future<AppResponse> getImage();
+  Future<AppResponse> getImageProduct({required int id});
+  Future<AppResponse> getOrders();
+  Future<AppResponse> getStatistics();
 }
 
 class ImpTestRepositories implements TestRepositories {
@@ -23,13 +45,7 @@ class ImpTestRepositories implements TestRepositories {
   ImpTestRepositories({required this.api});
 
   @override
-  Future<AppResponse> test({required String test}) {
-    // TODO: implement uploadImage
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<AppResponse> addProductSeller(
+  Future<AppResponse> addProduct(
       {required String name_en,
       required String name_ar,
       required int category_id,
@@ -61,5 +77,89 @@ class ImpTestRepositories implements TestRepositories {
       response.networkFailure = e.failure;
     }
     return response;
+  }
+  
+  @override
+  Future<AppResponse> completeOrder({required int id}) {
+    // TODO: implement completeOrder
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> deleteImage() {
+    // TODO: implement deleteImage
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> deleteProduct({required int id}) {
+    // TODO: implement deleteProduct
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> deleteProductImage({required int id}) {
+    // TODO: implement deleteProductImage
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> editProduct({required String name_en, required String name_ar, required String category_id, required String quantity, required String price, required String description_en, required String description_ar}) {
+    // TODO: implement editProduct
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getImage() {
+    // TODO: implement getImage
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getImageProduct({required int id}) {
+    // TODO: implement getImageProduct
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getOrders() {
+    // TODO: implement getOrders
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getProducts() {
+    // TODO: implement getProducts
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getStatistics() {
+    // TODO: implement getStatistics
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> getTopProducts() {
+    // TODO: implement getTopProducts
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> rejectOrder({required int id}) {
+    // TODO: implement rejectOrder
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> uploadImage({required FormData image}) {
+    // TODO: implement uploadImage
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future<AppResponse> uploadImageProduct({required FormData image}) {
+    // TODO: implement uploadImageProduct
+    throw UnimplementedError();
   }
 }

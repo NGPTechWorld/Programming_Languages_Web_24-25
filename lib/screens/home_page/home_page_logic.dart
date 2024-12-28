@@ -59,7 +59,7 @@ class HomePageController extends GetxController {
   var loadingState = LoadingState.idle.obs;
   final indexPageSeller = 0.obs;
   List<Widget> pages = [];
-  final managerRepositories = Get.find<ImpTManagerRepositories>();
+  final managerRepositories = Get.find<ImpManagerRepositories>();
   fetchPages() {
     if (managerCurrent!.role == "seller") {
       pages.addAll([

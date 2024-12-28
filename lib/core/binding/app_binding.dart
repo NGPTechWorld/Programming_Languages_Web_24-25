@@ -12,7 +12,7 @@ class AppBinding implements Bindings {
     Get.put(CacheServiceGetStorage());
     Get.put(DioConsumer(dio: Dio()));
     //Get.put(ImpUsersRepositories(api: Get.find<DioConsumer>()));
-    Get.put(ImpTManagerRepositories(api: Get.find<DioConsumer>()));
+    Get.put(ImpManagerRepositories(api: Get.find<DioConsumer>()));
     Get.put(StartPageBinging()).dependencies();
   }
 

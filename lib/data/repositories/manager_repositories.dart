@@ -9,8 +9,6 @@ import 'package:quick_delivery_admin/app/services/local_storage/cache_services_w
 import 'package:quick_delivery_admin/core/errors/error_handler.dart';
 import 'package:quick_delivery_admin/data/entities/login_entitie.dart';
 import 'package:quick_delivery_admin/data/module/manager_model.dart';
-import 'package:quick_delivery_admin/screens/login_page/login_page.dart';
-import 'package:quick_delivery_admin/screens/login_page/login_page_logic.dart';
 
 abstract class ManagerRepositories {
   Future<AppResponse> login({required String name, required String password});
@@ -24,10 +22,10 @@ abstract class ManagerRepositories {
   Future<AppResponse> checkToken();
 }
 
-class ImpTManagerRepositories implements ManagerRepositories {
+class ImpManagerRepositories implements ManagerRepositories {
   final ApiServices api;
   final cache = Get.find<CacheServicesSharedPreferences>();
-  ImpTManagerRepositories({required this.api});
+  ImpManagerRepositories({required this.api});
 
   @override
   Future<AppResponse> checkToken() async {
