@@ -97,4 +97,8 @@ class HomePageController extends GetxController {
 
     indexPageSeller.value = indexPage;
   }
+
+  logout(){
+    
+  }
 }

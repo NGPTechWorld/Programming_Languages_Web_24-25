@@ -7,9 +7,9 @@ import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
 
 // ignore: must_be_immutable
-class ProductItemCard extends StatelessWidget {
+class ProductItemMarketCard extends StatelessWidget {
   ProductsCardEntite product;
-  ProductItemCard({super.key, required this.product});
+  ProductItemMarketCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,15 @@ class ProductItemCard extends StatelessWidget {
                             (Get.locale.toString() == "ar"
                                 ? product.categoryAr
                                 : product.categoryEn),
+                        style: StyleManager.body02_Medium(
+                          color: ColorManager.primary6Color,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "\n" +
+                            (Get.locale.toString() == "ar"
+                                ? product.market_name_ar!
+                                : product.market_name_en!),
                         style: StyleManager.body02_Medium(
                           color: ColorManager.primary6Color,
                         ),

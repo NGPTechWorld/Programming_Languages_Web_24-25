@@ -5,7 +5,7 @@ import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page_logic.dart';
 import 'package:quick_delivery_admin/screens/dashboard_admin_page/widgets/my_admin_info.dart';
-import 'package:quick_delivery_admin/screens/dashboard_seller_page/widgets/top_product_item.dart';
+import 'package:quick_delivery_admin/screens/dashboard_admin_page/widgets/top_product_item_admin.dart';
 
 class DashboardAdminPage extends GetView<DashboardAdminPageController> {
   const DashboardAdminPage({super.key});
@@ -42,7 +42,7 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
                 children: List.generate(
                   controller.products.length,
                   (index) =>
-                      TopProductItem(product: controller.products[index]),
+                      TopProductItemAdmin(product: controller.products[index]),
                 ),
               ),
             ],

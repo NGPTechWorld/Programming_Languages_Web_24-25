@@ -5,11 +5,12 @@ import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
+import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page_logic.dart';
 
 // ignore: must_be_immutable
-class ProductItemCard extends StatelessWidget {
+class TopProductItemAdmin extends GetView<DashboardSellerPageController> {
   ProductsCardEntite product;
-  ProductItemCard({super.key, required this.product});
+  TopProductItemAdmin({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +71,15 @@ class ProductItemCard extends StatelessWidget {
                             (Get.locale.toString() == "ar"
                                 ? product.categoryAr
                                 : product.categoryEn),
+                        style: StyleManager.body02_Medium(
+                          color: ColorManager.primary6Color,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "\n" +
+                            (Get.locale.toString() == "ar"
+                                ? product.market_name_ar!
+                                : product.market_name_en!),
                         style: StyleManager.body02_Medium(
                           color: ColorManager.primary6Color,
                         ),

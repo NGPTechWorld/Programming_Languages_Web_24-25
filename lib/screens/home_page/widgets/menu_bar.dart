@@ -56,9 +56,14 @@ class MenuBarCustom extends GetView<HomePageController> {
                 title: StringManager.languageDialogTitle.tr,
               ),
             ),
-            MenuCard(
-              icon: Icons.logout,
-              title: StringManager.logout.tr,
+            InkWell(
+              onTap: () {
+                controller.logout();
+              },
+              child: MenuCard(
+                icon: Icons.logout,
+                title: StringManager.logout.tr,
+              ),
             ),
           ],
         ),

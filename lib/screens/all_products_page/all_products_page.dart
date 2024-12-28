@@ -4,7 +4,7 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/all_products_page/all_products_page_logic.dart';
-import 'package:quick_delivery_admin/screens/custom_widgets/product_item_card.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/product_item_market_card.dart';
 
 class AllProductsPage extends GetView<AllProductsPageController> {
   const AllProductsPage({super.key});
@@ -35,7 +35,7 @@ class AllProductsPage extends GetView<AllProductsPageController> {
                 children: List.generate(
                   controller.products.length,
                   (index) =>
-                      ProductItemCard(product: controller.products[index]),
+                      ProductItemMarketCard(product: controller.products[index]),
                 ),
               ),
             ],
