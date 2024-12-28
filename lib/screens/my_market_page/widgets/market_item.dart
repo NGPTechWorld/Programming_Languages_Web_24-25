@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
-import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
+import 'package:quick_delivery_admin/data/entities/Market_card_entite.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/shimmer_placeholder.dart';
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 
 // ignore: must_be_immutable
 class MarketItem extends GetView<MyProductSellerPageController> {
-  ProductsCardEntite product;
-  MarketItem({super.key, required this.product});
+  MarketCardEntite market;
+  MarketItem({super.key, required this.market});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +26,21 @@ class MarketItem extends GetView<MyProductSellerPageController> {
           borderRadius: BorderRadius.circular(AppSize.s18),
           color: ColorManager.primary1Color,
         ),
+        constraints: BoxConstraints(
+          maxWidth: 400,
+        ),
         child: Stack(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Center(
                   child: Container(
                     height: 200,
                     width: 200,
                     child: Image.network(
-                      product.image!,
+                      market.image!,
                       height: 200,
                       width: 200,
                       errorBuilder: (context, error, stackTrace) {
@@ -53,42 +56,33 @@ class MarketItem extends GetView<MyProductSellerPageController> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: AppPadding.p10,
-                      right: AppPadding.p10,
-                      top: AppPadding.p10),
-                  child: RichText(
-                    text: TextSpan(
+                Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 200,
+                    ),
+                    padding: const EdgeInsets.only(
+                        left: AppPadding.p10,
+                        right: AppPadding.p10,
+                        top: AppPadding.p10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        TextSpan(
-                          text: (Get.locale.toString() == "ar"
-                                  ? product.nameAr
-                                  : product.nameEn) +
-                              "\n",
-                          style: StyleManager.body01_Semibold(
+                        Text(
+                          (Get.locale.toString() == "ar"
+                              ? market.nameAr
+                              : market.nameEn),
+                          style: StyleManager.h3_Bold(
                             color: ColorManager.blackColor,
                           ),
                         ),
-                        TextSpan(
-                          text: "\n" +
-                              (Get.locale.toString() == "ar"
-                                  ? product.categoryAr
-                                  : product.categoryEn),
-                          style: StyleManager.body02_Medium(
+                        Text(
+                          "\n" + market.manager_name,
+                          style: StyleManager.h4_Medium(
                             color: ColorManager.primary6Color,
                           ),
                         ),
-                        TextSpan(
-                          text: "\n\n" + product.price.toString() + " ",
-                          style: StyleManager.body01_Semibold(
-                            color: ColorManager.primary5Color,
-                          ),
-                        ),
                       ],
-                    ),
-                  ),
-                ),
+                    )),
                 SizedBox(
                   height: 10,
                 ),

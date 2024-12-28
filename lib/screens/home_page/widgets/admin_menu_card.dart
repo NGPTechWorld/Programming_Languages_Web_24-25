@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 import 'package:quick_delivery_admin/screens/home_page/widgets/menu_card.dart';
 
@@ -16,7 +17,7 @@ class AdminMenuCard extends GetView<HomePageController> {
           },
           child: MenuCard(
             icon: Icons.dashboard,
-            title: "Dashboard",
+            title: StringManager.Dashboard.tr,
           ),
         ),
         InkWell(
@@ -25,7 +26,7 @@ class AdminMenuCard extends GetView<HomePageController> {
           },
           child: MenuCard(
             icon: Icons.store,
-            title: "My Markets",
+            title: StringManager.MyMarkets.tr,
           ),
         ),
         InkWell(
@@ -33,8 +34,8 @@ class AdminMenuCard extends GetView<HomePageController> {
             controller.gotToPage(2);
           },
           child: MenuCard(
-            icon: Icons.category,
-            title: "All Products",
+            icon: Icons.manage_accounts_sharp,
+            title: StringManager.MYManagers.tr,
           ),
         ),
         InkWell(
@@ -42,13 +43,22 @@ class AdminMenuCard extends GetView<HomePageController> {
             controller.gotToPage(3);
           },
           child: MenuCard(
+            icon: Icons.category,
+            title: StringManager.AllProducts.tr,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            controller.gotToPage(4);
+          },
+          child: MenuCard(
             icon: Icons.delivery_dining,
-            title: "All Orders",
+            title: StringManager.AllOrders.tr,
           ),
         ),
         MenuCard(
           icon: Icons.settings,
-          title: "Settings",
+          title: StringManager.Settings.tr,
         ),
       ],
     );

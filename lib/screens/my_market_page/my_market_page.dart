@@ -34,7 +34,7 @@ class MyMarketPage extends GetView<MyMarketPageController> {
                 spacing: 16.0,
                 runSpacing: 16.0,
                 children: List.generate(
-                  controller.products.length + 1,
+                  controller.markets.length + 1,
                   (index) => index == 0
                       ? Container(
                           padding: const EdgeInsets.all(AppPadding.p10),
@@ -43,7 +43,9 @@ class MyMarketPage extends GetView<MyMarketPageController> {
                           child: Padding(
                             padding: const EdgeInsets.all(AppPadding.p10),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                controller.addMarket();
+                              },
                               child: Card(
                                 color: ColorManager.primary3Color,
                                 child: Center(
@@ -57,7 +59,7 @@ class MyMarketPage extends GetView<MyMarketPageController> {
                             ),
                           ),
                         )
-                      : MarketItem(product: controller.products[index - 1]),
+                      : MarketItem(market: controller.markets[index - 1]),
                 ),
               ),
             ],

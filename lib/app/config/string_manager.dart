@@ -213,5 +213,12 @@ class StringManager {
       "forgotPassowrdEmailVerificationsubTitle";
   static const String forgotPassowrdVerify = "forgotPassowrdVerify";
   //Admin
-  static const AllProduct = "AllProduct";
+  static const AllProducts = "AllProducts";
+  static const MyMarkets = "MyMarkets";
+  static const MYManagers = "MYManagers";
+  static const AllOrders = "AllOrders";
+  static const AddMarket = "AddMarket";
+  static const MarketNameAr = "MarketNameAr";
+  static const MarketNameEn = "MarketNameEn";
+  static const EditMarket = "EditMarket";
 }

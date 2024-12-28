@@ -4,7 +4,6 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page_logic.dart';
-import 'package:quick_delivery_admin/screens/dashboard_seller_page/widgets/my_market_info.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/widgets/top_product_item.dart';
 
 class DashboardAdminPage extends GetView<DashboardAdminPageController> {
@@ -28,7 +27,7 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(),
-              MyMarketInfo(),
+              // MyMarketInfo(),
               SizedBox(
                 height: 20,
               ),

@@ -14,7 +14,7 @@ class AllProductsPage extends GetView<AllProductsPageController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          StringManager.AllProduct.tr,
+          StringManager.AllProducts.tr,
           style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,

@@ -4,6 +4,8 @@ import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:quick_delivery_admin/data/cache/const.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
+import 'package:quick_delivery_admin/screens/add_market_page/add_market_page.dart';
+import 'package:quick_delivery_admin/screens/add_market_page/add_market_page_logic.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/all_products_page/all_products_page.dart';
@@ -36,6 +38,7 @@ class HomePageBinging extends Bindings {
       Get.lazyPut(() => (MyMarketPageController()));
       Get.lazyPut(() => (AllProductsPageController()));
       Get.lazyPut(() => (MyOrdersAdminPageController()));
+      Get.lazyPut(() => (AddMarketPageController()));
     }
 
     Get.put(HomePageController());
@@ -60,11 +63,15 @@ class HomePageController extends GetxController {
       pages.addAll([
         DashboardAdminPage(),
         MyMarketPage(),
+        SupPage(
+          color: ColorManager.blackColor,
+        ),
         AllProductsPage(),
         MyOrdersAdminPage(),
         SupPage(
           color: ColorManager.blackColor,
         ),
+        AddMarketPage()
       ]);
     }
   }
@@ -74,9 +81,16 @@ class HomePageController extends GetxController {
   }
 
   gotToPage(int indexPage) {
-    Get.lazyPut(() => AddProductPageController());
-    final productController = Get.find<AddProductPageController>();
-    productController.clearData();
+    if (managerCurrent!.role == "seller") {
+      Get.lazyPut(() => AddProductPageController());
+      final productController = Get.find<AddProductPageController>();
+      productController.clearData();
+    } else {
+      Get.lazyPut(() => AddMarketPageController());
+      final marketController = Get.find<AddMarketPageController>();
+      marketController.clearData();
+    }
+
     indexPageSeller.value = indexPage;
   }
 }

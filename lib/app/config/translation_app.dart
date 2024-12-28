@@ -172,7 +172,16 @@ class TranslationApp implements Translations {
           StringManager.AddProduct: "اضافة المنتج",
           StringManager.SelectImage: "تحديد صورة",
           StringManager.EditProduct: "تعديل المنتج",
-          StringManager.UploadProductImage: "رفع صورة للمنتج:",
+          StringManager.UploadProductImage: "رفع صورة :",
+          //Admin
+          StringManager.AllProducts: "كل المنتجات",
+          StringManager.MyMarkets: "متاجري",
+          StringManager.MYManagers: "الإداريين",
+          StringManager.AllOrders: "كل الطلبات",
+          StringManager.AddMarket: "اضافة المتجر",
+          StringManager.EditMarket: "تعديل المتجر",
+          StringManager.MarketNameAr: "اسم المتجر (عربي)",
+          StringManager.MarketNameEn: "اسم المتجر (انكليزي)",
         },
         "en": {
           //Sign Up
@@ -344,7 +353,16 @@ class TranslationApp implements Translations {
           StringManager.AddProduct: "Add Product",
           StringManager.SelectImage: "Select Image",
           StringManager.EditProduct: "Edit Product",
-          StringManager.UploadProductImage: "Upload Product Image:",
+          StringManager.UploadProductImage: "Upload Image:",
+          //Admin
+          StringManager.AllProducts: "All Products",
+          StringManager.MyMarkets: "My Markets",
+          StringManager.MYManagers: "My Managers",
+          StringManager.AllOrders: "All Orders",
+          StringManager.AddMarket: "Add Market",
+          StringManager.EditMarket: "Edit Market",
+          StringManager.MarketNameAr: "Market Name (Arabic)",
+          StringManager.MarketNameEn: "Market Name (English)",
         },
       };
 }

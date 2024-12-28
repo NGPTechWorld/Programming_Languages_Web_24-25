@@ -14,7 +14,7 @@ class MyOrdersAdminPage extends GetView<MyOrdersAdminPageController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          StringManager.MyOrdersPage.tr,
+          StringManager.AllOrders.tr,
           style: StyleManager.h2_Bold(),
         ),
         backgroundColor: ColorManager.primary2Color,
