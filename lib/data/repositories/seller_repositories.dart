@@ -6,9 +6,9 @@ import 'package:quick_delivery_admin/app/services/api/api_services.dart';
 import 'package:quick_delivery_admin/app/services/api/dio_consumer.dart';
 import 'package:quick_delivery_admin/app/services/api/end_points.dart';
 import 'package:quick_delivery_admin/core/errors/error_handler.dart';
-import 'package:quick_delivery_admin/screens/add_product_page/widget/upload_image.dart';
+import 'package:quick_delivery_admin/data/entities/marcket_statistics.dart';
 
-abstract class TestRepositories {
+abstract class SellerRepositories {
   Future<AppResponse> addProduct(
       {required String name_en,
       required String name_ar,
@@ -40,9 +40,9 @@ abstract class TestRepositories {
   Future<AppResponse> getStatistics();
 }
 
-class ImpTestRepositories implements TestRepositories {
+class ImpSellerRepositories implements SellerRepositories {
   final ApiServices api;
-  ImpTestRepositories({required this.api});
+  ImpSellerRepositories({required this.api});
 
   @override
   Future<AppResponse> addProduct(
@@ -78,85 +78,104 @@ class ImpTestRepositories implements TestRepositories {
     }
     return response;
   }
-  
+
   @override
   Future<AppResponse> completeOrder({required int id}) {
     // TODO: implement completeOrder
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> deleteImage() {
     // TODO: implement deleteImage
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> deleteProduct({required int id}) {
     // TODO: implement deleteProduct
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> deleteProductImage({required int id}) {
     // TODO: implement deleteProductImage
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> editProduct({required String name_en, required String name_ar, required String category_id, required String quantity, required String price, required String description_en, required String description_ar}) {
+  Future<AppResponse> editProduct(
+      {required String name_en,
+      required String name_ar,
+      required String category_id,
+      required String quantity,
+      required String price,
+      required String description_en,
+      required String description_ar}) {
     // TODO: implement editProduct
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> getImage() {
     // TODO: implement getImage
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> getImageProduct({required int id}) {
     // TODO: implement getImageProduct
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> getOrders() {
     // TODO: implement getOrders
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> getProducts() {
     // TODO: implement getProducts
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<AppResponse> getStatistics() {
-    // TODO: implement getStatistics
-    throw UnimplementedError();
+  Future<AppResponse> getStatistics() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.statisticsSeller,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = MarcketStatistics.fromJson(data);
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
-  
+
   @override
   Future<AppResponse> getTopProducts() {
     // TODO: implement getTopProducts
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> rejectOrder({required int id}) {
     // TODO: implement rejectOrder
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> uploadImage({required FormData image}) {
     // TODO: implement uploadImage
     throw UnimplementedError();
   }
-  
+
   @override
   Future<AppResponse> uploadImageProduct({required FormData image}) {
     // TODO: implement uploadImageProduct

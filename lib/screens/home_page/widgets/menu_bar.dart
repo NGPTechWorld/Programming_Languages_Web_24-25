@@ -58,7 +58,7 @@ class MenuBarCustom extends GetView<HomePageController> {
             ),
             InkWell(
               onTap: () {
-                controller.logout();
+                controller.logout(context);
               },
               child: MenuCard(
                 icon: Icons.logout,

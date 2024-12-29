@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
-import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page_logic.dart';
 import '../../../app/config/assets_manager.dart';
 
@@ -11,15 +10,11 @@ class StartPage extends StatelessWidget {
   final controller = Get.find<StartPageController>();
 
   @override
-  void initState() {
-    controller.loadingState.value = LoadingState.loading;
-
-    Future.delayed(Duration(seconds: 1), () {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    controller.startApp();
+    Future.delayed(Duration(seconds: 2), () {
+      controller.startApp();
+    });
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.whiteColor,

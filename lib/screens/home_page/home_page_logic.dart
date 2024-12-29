@@ -16,6 +16,8 @@ import 'package:quick_delivery_admin/screens/all_products_market_page/all_produc
 import 'package:quick_delivery_admin/screens/all_products_page/all_products_page.dart';
 import 'package:quick_delivery_admin/screens/all_products_page/all_products_page_logic.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/helper_widget.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/show_loading_dialog.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page.dart';
 import 'package:quick_delivery_admin/screens/dashboard_admin_page/dashboard_admin_page_logic.dart';
 import 'package:quick_delivery_admin/screens/dashboard_seller_page/dashboard_seller_page.dart';
@@ -30,6 +32,8 @@ import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_sel
 import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page.dart';
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
+import 'package:quick_delivery_admin/screens/start_page/start_page.dart';
+import 'package:quick_delivery_admin/screens/start_page/start_page_logic.dart';
 
 class HomePageBinging extends Bindings {
   @override
@@ -100,7 +104,21 @@ class HomePageController extends GetxController {
     indexPageSeller.value = indexPage;
   }
 
-  logout() {}
+  logout(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    showLoadingDialog(context);
+    final response = await managerRepositories.logout();
+    if (response.success) {
+      cache.clearData();
+      SnackBarCustom.show(context, response.data.toString());
+      loadingState.value = LoadingState.doneWithData;
+    } else {
+      SnackBarCustom.show(context, response.networkFailure!.message);
+      loadingState.value = LoadingState.hasError;
+    }
+    Get.offAll(StartPage(), binding: StartPageBinging());
+  }
+
   currentManager() async {
     final response = await managerRepositories.currentManager();
     if (response.success) {
