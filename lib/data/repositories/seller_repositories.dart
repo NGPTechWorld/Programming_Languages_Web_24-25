@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:dio/dio.dart' as dio;
-import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/api/api_response_model.dart';
 import 'package:quick_delivery_admin/app/services/api/api_services.dart';
 import 'package:quick_delivery_admin/app/services/api/dio_consumer.dart';
@@ -9,6 +8,7 @@ import 'package:quick_delivery_admin/core/errors/error_handler.dart';
 import 'package:quick_delivery_admin/data/entities/marcket_statistics.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/module/category_model.dart';
+import 'package:quick_delivery_admin/data/module/order_model.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
 
 abstract class SellerRepositories {
@@ -85,9 +85,23 @@ class ImpSellerRepositories implements SellerRepositories {
   }
 
   @override
-  Future<AppResponse> completeOrder({required int id}) {
-    // TODO: implement completeOrder
-    throw UnimplementedError();
+  Future<AppResponse> completeOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl +
+              EndPoints.completeOrderSeller +
+              id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -167,9 +181,23 @@ class ImpSellerRepositories implements SellerRepositories {
   }
 
   @override
-  Future<AppResponse> getOrders() {
-    // TODO: implement getOrders
-    throw UnimplementedError();
+  Future<AppResponse> getOrders() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getOrdersSeller,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['orders'] as List<dynamic>;
+      response.data =
+          listData.map((json) => OrderModel.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -231,9 +259,21 @@ class ImpSellerRepositories implements SellerRepositories {
   }
 
   @override
-  Future<AppResponse> rejectOrder({required int id}) {
-    // TODO: implement rejectOrder
-    throw UnimplementedError();
+  Future<AppResponse> rejectOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.rejectOrderSeller + id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override

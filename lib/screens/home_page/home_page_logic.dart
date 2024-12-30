@@ -103,6 +103,10 @@ class HomePageController extends GetxController {
         controller.getTopProducts();
         controller.getStatisticsAdmin();
         break;
+      case "MyOrderdsSeller":
+        final controller = Get.find<MyOrdersSellerPageController>();
+        controller.getOrders();
+        break;
     }
   }
 
@@ -144,6 +148,4 @@ class HomePageController extends GetxController {
       loadingState = LoadingState.hasError.obs;
     }
   }
-
- 
 }

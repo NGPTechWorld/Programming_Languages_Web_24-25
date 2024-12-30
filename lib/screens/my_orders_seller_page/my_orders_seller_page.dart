@@ -11,6 +11,7 @@ class MyOrdersSellerPage extends GetView<MyOrdersSellerPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getOrders();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -26,12 +27,14 @@ class MyOrdersSellerPage extends GetView<MyOrdersSellerPageController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.order.length,
-                  (index) => OrderCard(orderModel: controller.order[index]),
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.orders.length,
+                    (index) => OrderCard(orderModel: controller.orders[index]),
+                  ),
                 ),
               ),
             ],

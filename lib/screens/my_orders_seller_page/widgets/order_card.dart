@@ -5,9 +5,10 @@ import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/module/order_model.dart';
+import 'package:quick_delivery_admin/screens/my_orders_seller_page/my_orders_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/my_orders_seller_page/widgets/status_label.dart';
 
-class OrderCard extends StatelessWidget {
+class OrderCard extends GetView<MyOrdersSellerPageController> {
   const OrderCard({
     super.key,
     required this.orderModel,
@@ -168,11 +169,19 @@ class OrderCard extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                StatusLabel(statusId: 4),
+                                InkWell(
+                                    onTap: () {
+                                      controller.rejectOrder(orderModel);
+                                    },
+                                    child: StatusLabel(statusId: 4)),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                StatusLabel(statusId: 3),
+                                InkWell(
+                                    onTap: () {
+                                      controller.completeOrder(orderModel);
+                                    },
+                                    child: StatusLabel(statusId: 3)),
                               ],
                             )
                           ],
