@@ -43,7 +43,7 @@ class ProductsCardEntite {
       nameAr: json['name_ar'],
       quantity: json['quantity'],
       price: json['price'].toDouble(),
-      image: json['image'], // قد يكون null
+      image: (json['image']) ?? "",
       descriptionEn: json['description_en'],
       descriptionAr: json['description_ar'],
       numberOfPurchases: json['number_of_purchases'],

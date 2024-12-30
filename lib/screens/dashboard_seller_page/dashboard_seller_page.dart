@@ -12,6 +12,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getTopProducts(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -25,7 +26,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(),
               MyMarketInfo(),
@@ -36,13 +37,15 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
                 StringManager.TopSellerProduct.tr,
                 style: StyleManager.h2_Bold(),
               ),
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.products.length,
-                  (index) =>
-                      TopProductItem(product: controller.products[index]),
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.products.length,
+                    (index) =>
+                        TopProductItem(product: controller.products[index]),
+                  ),
                 ),
               ),
             ],
