@@ -36,7 +36,8 @@ class AddProductPageController extends GetxController {
   final moniterMode = false.obs;
   ProductsCardEntite? myproduct;
   RxInt selectedCategory = 1.obs;
-  Rx<String> imageSelectedPath = ''.obs;
+  String? imageURL;
+  Rx<String> imageName = ''.obs;
   Rx<Uint8List?> imageBytes = Rx<Uint8List?>(null);
 
   var categories = [
@@ -47,12 +48,11 @@ class AddProductPageController extends GetxController {
 
   Future<void> pickImage() async {
     try {
-      // فتح نافذة اختيار الصورة
-      Uint8List? selectedImage = await ImagePickerWeb.getImageAsBytes();
-
+      final Uint8List? selectedImage = await ImagePickerWeb.getImageAsBytes();
       if (selectedImage != null) {
         imageBytes.value = selectedImage;
-        imageSelectedPath.value = 'SelectedImage.png';
+        imageName.value = "${nameENController.text}";
+        update();
       } else {
         print("No image selected");
       }
@@ -61,7 +61,7 @@ class AddProductPageController extends GetxController {
     }
   }
 
-  void fillProduct(ProductsCardEntite product) {
+  void fillProduct(ProductsCardEntite product) async {
     nameENController.text = product.nameEn;
     nameARController.text = product.nameAr;
     descENController.text = product.descriptionEn;
@@ -69,11 +69,12 @@ class AddProductPageController extends GetxController {
     priceController.text = product.price.toString();
     quantityController.text = product.quantity.toString();
     idProduct = product.id;
-    //selectedCategory.
+    imageURL = (product.image!);
+    update();
   }
 
   addProduct(BuildContext context) async {
-    if (imageBytes == null) {
+    if (imageBytes.value == null) {
       SnackBarCustom.show(context, StringManager.UploadProductImage.tr);
       return;
     }
@@ -91,8 +92,8 @@ class AddProductPageController extends GetxController {
         description_ar: descARController.text);
     if (response.success) {
       SnackBarCustom.show(context, StringManager.addedProduct.tr);
-      // myProductController.getProducts(context);
-      //uploadImage(response.data);
+      //myProductController.getProducts(context);
+      uploadImage(response.data);
       homeController.refreshData("MyProductSeller");
       calnsel();
       loadingState.value = LoadingState.doneWithData;
@@ -103,7 +104,7 @@ class AddProductPageController extends GetxController {
   }
 
   editProduct(BuildContext context) async {
-    if (imageBytes == null) {
+    if (imageBytes.value == null) {
       SnackBarCustom.show(context, StringManager.UploadProductImage.tr);
       return;
     }
@@ -139,12 +140,12 @@ class AddProductPageController extends GetxController {
   }
 
   uploadImage(int id) async {
-    String fileName = imageSelectedPath.value.split('/').last;
+    Dio.MultipartFile imageFile = Dio.MultipartFile.fromBytes(
+      imageBytes.value!,
+      filename: imageName.value,
+    );
     Dio.FormData formData = Dio.FormData.fromMap({
-      "image": await Dio.MultipartFile.fromFile(
-        imageSelectedPath.value,
-        filename: fileName,
-      ),
+      "image": imageFile,
     });
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.uploadImageProduct(
@@ -163,6 +164,7 @@ class AddProductPageController extends GetxController {
             priceController.text = quantityController.text = "";
     selectedCategory.value = 1;
     imageBytes = Rx<Uint8List?>(null);
-    imageSelectedPath = ''.obs;
+    update();
+    imageName = ''.obs;
   }
 }

@@ -187,6 +187,11 @@ class TranslationApp implements Translations {
           StringManager.number_of_orders: "عدد الطلبات",
           StringManager.AddManager: "اضافة مدير",
           StringManager.AllProductsMarkect: "منتجات المتجر",
+          StringManager.addedProduct: "تمت إضافة المنتج",
+          StringManager.deletedProduct: "تم حذف المنتج",
+          StringManager.editedProduct: "تم تعديل المنتج",
+          StringManager.rejectOrder: "تم رفض الطلب",
+          StringManager.completeOrder: "تم تأكيد الطلب",
         },
         "en": {
           //Sign Up
@@ -373,6 +378,11 @@ class TranslationApp implements Translations {
           StringManager.number_of_orders: "Number of Orders",
           StringManager.AddManager: "Add Manager",
           StringManager.AllProductsMarkect: "Products Markect",
+          StringManager.addedProduct: "ِAdded Product",
+          StringManager.deletedProduct: "Deleted Product",
+          StringManager.editedProduct: "Edited Product",
+          StringManager.rejectOrder: "Rejected Order",
+          StringManager.completeOrder: "Completed Order",
         },
       };
 }

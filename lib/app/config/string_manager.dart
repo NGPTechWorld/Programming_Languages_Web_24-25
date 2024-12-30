@@ -230,4 +230,6 @@ class StringManager {
   static const addedProduct = "addedProduct";
   static const deletedProduct = "deletedProduct";
   static const editedProduct = "editedProduct";
+  static const rejectOrder = "rejectOrder";
+  static const completeOrder = "completeOrder";
 }

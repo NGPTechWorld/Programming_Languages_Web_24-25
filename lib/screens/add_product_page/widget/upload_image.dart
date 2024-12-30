@@ -18,23 +18,25 @@ class UploadImageProduct extends GetView<AddProductPageController> {
           style: StyleManager.h4_Medium(),
         ),
         SizedBox(height: 20),
-        Obx(
-          () => GestureDetector(
-            onTap: () {
-              controller.pickImage();
-            },
-            child: Container(
+        GestureDetector(
+          onTap: () {
+            controller.pickImage();
+          },
+          child: GetBuilder<AddProductPageController>(
+            builder: (controller) => Container(
               width: 150,
               height: 150,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
               ),
-              child: controller.imageBytes.value == null
-                  ? Center(child: Text(StringManager.SelectImage.tr))
-                  : Image.memory(
-                      controller.imageBytes.value!,
-                      fit: BoxFit.contain,
-                    ),
+              child: controller.moniterMode.value
+                  ? Image.network(controller.imageURL!)
+                  : controller.imageBytes.value == null
+                      ? Center(child: Text(StringManager.SelectImage.tr))
+                      : Image.memory(
+                          controller.imageBytes.value!,
+                          fit: BoxFit.contain,
+                        ),
             ),
           ),
         ),

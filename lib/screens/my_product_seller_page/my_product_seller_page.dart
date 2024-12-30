@@ -37,6 +37,7 @@ class MyProductSellerPage extends GetView<MyProductSellerPageController> {
                 Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Container()),
+                
                 Obx(
                   () => Wrap(
                     spacing: 16.0,

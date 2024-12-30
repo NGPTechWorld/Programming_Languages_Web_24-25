@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/order_model.dart';
 import 'package:quick_delivery_admin/data/repositories/seller_repositories.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 
 class MyOrdersSellerPageController extends GetxController {
   final searchController = TextEditingController();
@@ -20,21 +22,22 @@ class MyOrdersSellerPageController extends GetxController {
     }
   }
 
-  rejectOrder(OrderModel mYrder) async {
+  rejectOrder(OrderModel mYrder,BuildContext context) async {
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.rejectOrder(id: mYrder.id);
     if (response.success) {
+       SnackBarCustom.show(context, StringManager.rejectOrder.tr);
       getOrders();
     } else {
       loadingState.value = LoadingState.hasError;
     }
   }
 
-  completeOrder(OrderModel mYrder) async {
+  completeOrder(OrderModel mYrder,BuildContext context) async {
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.completeOrder(id: mYrder.id);
     if (response.success) {
-      print("object hajjjar");
+       SnackBarCustom.show(context, StringManager.completeOrder.tr);
       getOrders();
     } else {
       loadingState.value = LoadingState.hasError;

@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
@@ -35,6 +38,7 @@ import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_s
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page_logic.dart';
+import 'package:http/http.dart' as http;
 
 class HomePageBinging extends Bindings {
   @override
@@ -148,4 +152,6 @@ class HomePageController extends GetxController {
       loadingState = LoadingState.hasError.obs;
     }
   }
+
+  
 }

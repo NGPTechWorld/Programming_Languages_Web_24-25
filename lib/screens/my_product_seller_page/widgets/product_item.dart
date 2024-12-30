@@ -32,6 +32,7 @@ class ProductItem extends GetView<MyProductSellerPageController> {
                 children: [
                   Center(
                     child: Container(
+                      padding: EdgeInsets.all(10),
                       height: 200,
                       width: 200,
                       child: Image.network(
@@ -109,7 +110,7 @@ class ProductItem extends GetView<MyProductSellerPageController> {
                     ),
                     IconButton(
                       onPressed: () {
-                        controller.delete(product,context);
+                        controller.delete(product, context);
                       },
                       color: ColorManager.redColor,
                       icon: Icon(Icons.delete),

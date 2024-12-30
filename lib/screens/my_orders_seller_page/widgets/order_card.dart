@@ -171,7 +171,8 @@ class OrderCard extends GetView<MyOrdersSellerPageController> {
                               children: [
                                 InkWell(
                                     onTap: () {
-                                      controller.rejectOrder(orderModel);
+                                      controller.rejectOrder(
+                                          orderModel, context);
                                     },
                                     child: StatusLabel(statusId: 4)),
                                 SizedBox(
@@ -179,7 +180,8 @@ class OrderCard extends GetView<MyOrdersSellerPageController> {
                                 ),
                                 InkWell(
                                     onTap: () {
-                                      controller.completeOrder(orderModel);
+                                      controller.completeOrder(
+                                          orderModel, context);
                                     },
                                     child: StatusLabel(statusId: 3)),
                               ],
