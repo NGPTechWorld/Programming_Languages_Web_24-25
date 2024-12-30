@@ -1,68 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
+import 'package:quick_delivery_admin/data/repositories/seller_repositories.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
+import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 
 class MyProductSellerPageController extends GetxController {
   final searchController = TextEditingController();
   final homeController = Get.find<HomePageController>();
   final productController = Get.find<AddProductPageController>();
-  var products = <ProductsCardEntite>[
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-  ];
+  final sellerRepositories = Get.find<ImpSellerRepositories>();
+  var loadingState = LoadingState.idle.obs;
+  var products = <ProductsCardEntite>[].obs;
 
   void addProduct() {
     productController.moniterMode.value = false;
     homeController.indexPageSeller.value = 3;
   }
 
-  delete(ProductsCardEntite product) {}
-  void showProduct(ProductsCardEntite product) {
-    final data = {
-      "id": 3,
-      "market_id": 3,
-      "name_en": "Organic Apples",
-      "name_ar": "تفاح عضوي",
-      "quantity": 50,
-      "price": 300,
-      "image": "http://192.168.1.6:8000/storage/https://example.com/apples.jpg",
-      "description_en": "Fresh and organic",
-      "description_ar": "طازج وعضوي",
-      "number_of_purchases": 10,
-      "created_at": "2024-12-23T16:59:21.000000Z",
-      "updated_at": "2024-12-23T16:59:21.000000Z",
-      "category_en": "Food and Drinks",
-      "category_ar": "أطعمة ومشروبات"
-    };
+  getProducts() async {
+    loadingState.value = LoadingState.loading;
+    final response = await sellerRepositories.getProducts();
+    if (response.success) {
+      products.value = response.data;
+    } else {
+      loadingState.value = LoadingState.hasError;
+    }
+  }
 
-    productController.fillProduct(Product.fromJson(data));
-    productController.myproduct = Product.fromJson(data);
+  delete(ProductsCardEntite product, BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    final response = await sellerRepositories.deleteProduct(id: product.id);
+    if (response.success) {
+      SnackBarCustom.show(context, StringManager.deletedProduct.tr);
+      getProducts();
+    } else {
+      loadingState.value = LoadingState.hasError;
+    }
+  }
+
+  showProduct(ProductsCardEntite product) {
+    productController.fillProduct((product));
+    productController.myproduct = (product);
     productController.moniterMode.value = true;
     homeController.indexPageSeller.value = 3;
   }
 }
-
-final dataProductTemp = {
-  "id": 1,
-  "market_id": 1,
-  "name_en": "Choko Cake",
-  "name_ar": "كعكة شوكولا",
-  "quantity": 1,
-  "price": 10000,
-  "image": "/",
-  "description_en": "for birthdays",
-  "description_ar": "من اجل اعياد الميلاد",
-  "number_of_purchases": 1,
-  "created_at": "2024-12-18T09:38:05.000000Z",
-  "updated_at": "2024-12-18T12:08:03.000000Z",
-  "category_en": "Food and Drinks",
-  "category_ar": "أطعمة ومشروبات"
-};

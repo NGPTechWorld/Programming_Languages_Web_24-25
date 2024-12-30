@@ -40,10 +40,11 @@ class EndPoints {
   static const String editSeller = "/sellers/edit/"; //{product}
   static const String completeOrderSeller = "/sellers/completeOrder/"; //{order}
   static const String rejectOrderSeller = "/sellers/rejectOrder/"; //{order}
-  static const String deleteSeller = "/sellers/delete/"; //{product}
+  static const String deleteProduct = "/sellers/delete/"; //{product}
   static const String deleteImage = "/sellers/deleteImage";
   static const String deleteImageProduct = "/sellers/deleteImage/"; //{product}
   static const String getProductsSeller = "/sellers/getProducts";
+  static const String getProductSeller = "/sellers/getProduct/";
   static const String getTopProductsSeller = "/sellers/getTopProducts";
   static const String getImage = "/sellers/getImage";
   static const String getImageProduct = "/sellers/getImage/"; //{product}

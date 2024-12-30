@@ -4,6 +4,7 @@ import 'package:quick_delivery_admin/app/services/local_storage/cache_services_w
 import 'package:quick_delivery_admin/data/cache/const.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/module/manager_model.dart';
+import 'package:quick_delivery_admin/data/repositories/admin_repositories.dart';
 import 'package:quick_delivery_admin/data/repositories/manager_repositories.dart';
 import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page.dart';
 import 'package:quick_delivery_admin/screens/add_manager_page/add_manager_page_logic.dart';
@@ -64,6 +65,7 @@ class HomePageController extends GetxController {
   final indexPageSeller = 0.obs;
   List<Widget> pages = [];
   final managerRepositories = Get.find<ImpManagerRepositories>();
+  final adminRepositories = Get.find<ImpAdminRepositories>();
   fetchPages() {
     if (managerCurrent!.role == "seller") {
       pages.addAll([
@@ -88,6 +90,20 @@ class HomePageController extends GetxController {
 
   languageOnTap() {
     HelperWidget.languageDialgo();
+  }
+
+  refreshData(String tupe) {
+    switch (tupe) {
+      case "MyProductSeller":
+        final controller = Get.find<MyProductSellerPageController>();
+        controller.getProducts();
+        break;
+      case "DashboardSeller":
+        final controller = Get.find<DashboardSellerPageController>();
+        controller.getTopProducts();
+        controller.getStatisticsAdmin();
+        break;
+    }
   }
 
   gotToPage(int indexPage) {
@@ -128,4 +144,6 @@ class HomePageController extends GetxController {
       loadingState = LoadingState.hasError.obs;
     }
   }
+
+ 
 }

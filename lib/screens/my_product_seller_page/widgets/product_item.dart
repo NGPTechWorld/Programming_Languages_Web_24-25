@@ -109,7 +109,7 @@ class ProductItem extends GetView<MyProductSellerPageController> {
                     ),
                     IconButton(
                       onPressed: () {
-                        controller.delete(product);
+                        controller.delete(product,context);
                       },
                       color: ColorManager.redColor,
                       icon: Icon(Icons.delete),

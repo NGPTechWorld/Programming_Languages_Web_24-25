@@ -91,92 +91,94 @@ class MyMarketInfo extends GetView<DashboardSellerPageController> {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(top: 45),
-            child: Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                      color: ColorManager.firstColor.withAlpha(50),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        StringManager.MyOrders.tr,
-                        style: StyleManager.h4_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        marcketStatistics!.numberOfOrders.toString(),
-                        style: StyleManager.h1_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                    ],
+            child: GetBuilder<DashboardSellerPageController>(
+              builder: (controller) => Wrap(
+                spacing: 16.0,
+                runSpacing: 16.0,
+                children: [
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                        color: ColorManager.firstColor.withAlpha(50),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          StringManager.MyOrders.tr,
+                          style: StyleManager.h4_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          marcketStatistics!.numberOfOrders.toString(),
+                          style: StyleManager.h1_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: 240,
-                  height: 120,
-                  decoration: BoxDecoration(
-                      color: ColorManager.firstColor.withAlpha(100),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        StringManager.MyProducts.tr,
-                        style: StyleManager.h4_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        marcketStatistics!.numberOfProducts.toString(),
-                        style: StyleManager.h1_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                    ],
+                  Container(
+                    width: 240,
+                    height: 120,
+                    decoration: BoxDecoration(
+                        color: ColorManager.firstColor.withAlpha(100),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          StringManager.MyProducts.tr,
+                          style: StyleManager.h4_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          marcketStatistics!.numberOfProducts.toString(),
+                          style: StyleManager.h1_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 370,
-                  height: 120,
-                  decoration: BoxDecoration(
-                      color: ColorManager.secoundColor.withAlpha(100),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        StringManager.salary.tr,
-                        style: StyleManager.h4_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        marcketStatistics!.salary.toString(),
-                        style: StyleManager.h1_Semibold(
-                            color: ColorManager.primary6Color),
-                      ),
-                    ],
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-              ],
+                  Container(
+                    width: 370,
+                    height: 120,
+                    decoration: BoxDecoration(
+                        color: ColorManager.secoundColor.withAlpha(100),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          StringManager.salary.tr,
+                          style: StyleManager.h4_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          marcketStatistics!.salary.toString(),
+                          style: StyleManager.h1_Semibold(
+                              color: ColorManager.primary6Color),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

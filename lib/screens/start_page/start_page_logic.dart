@@ -54,6 +54,18 @@ class StartPageController extends GetxController {
     }
   }
 
+  getCategorys() async {
+    final response = await sellerRepositories.getCategorys();
+    if (response.success) {
+      managerCurrent = response.data;
+    } else {
+      if (response.networkFailure!.code == 401) {
+        cache.clearData();
+        Get.off(LoginPage(), binding: LoginPageBinding());
+      }
+    }
+  }
+
   getStatisticsAdmin() async {
     final response = await adminRepositories.getStatistics();
     if (response.success) {

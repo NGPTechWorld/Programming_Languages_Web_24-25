@@ -22,7 +22,7 @@ class StringManager {
   static const NumberOfPurchases = "NumberOfPurchases";
   static const CreateDate = "CreateDate";
   static const NameEnglish = "NameEnglish";
-  static const NameArabic = "NameEnglish";
+  static const NameArabic = "NameArabic";
   static const DescriptionArabic = "DescriptionArabic";
   static const DescriptionEnglish = "DescriptionEnglish";
   static const EnterPrice = "EnterPrice";
@@ -226,4 +226,8 @@ class StringManager {
   static const number_of_orders = "number_of_orders";
   static const AddManager = "AddManager";
   static const AllProductsMarkect = "AllProductsMarkect";
+  //
+  static const addedProduct = "addedProduct";
+  static const deletedProduct = "deletedProduct";
+  static const editedProduct = "editedProduct";
 }

@@ -12,7 +12,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.getTopProducts(context);
+    controller.getTopProducts();
     return Scaffold(
       appBar: AppBar(
         title: Text(

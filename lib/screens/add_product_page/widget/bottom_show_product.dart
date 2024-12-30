@@ -37,7 +37,9 @@ class BottomShowProduct extends GetView<AddProductPageController> {
               width: 200,
               child: controller.moniterMode.value
                   ? BottouCustom(
-                      function: () {},
+                      function: () {
+                        controller.editProduct(context);
+                      },
                       text: StringManager.EditProduct.tr,
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.firstDarkColor,
@@ -46,7 +48,9 @@ class BottomShowProduct extends GetView<AddProductPageController> {
                           controller.loadingState.value == LoadingState.loading,
                     )
                   : BottouCustom(
-                      function: () {},
+                      function: () {
+                        controller.addProduct(context);
+                      },
                       text: StringManager.AddProduct.tr,
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.secoundColor,

@@ -13,6 +13,7 @@ class SellerMenuCard extends GetView<HomePageController> {
       children: [
         InkWell(
           onTap: () {
+            controller.refreshData("DashboardSeller");
             controller.gotToPage(0);
           },
           child: MenuCard(

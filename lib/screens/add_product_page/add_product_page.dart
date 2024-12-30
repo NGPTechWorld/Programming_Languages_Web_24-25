@@ -39,7 +39,7 @@ class AddProductPage extends GetView<AddProductPageController> {
                   InputDesProduct(),
                   SizedBox(width: 50),
                   InputDetailProduct(),
-                  UploadImage()
+                  UploadImageProduct()
                 ],
               ),
               SizedBox(height: 20),

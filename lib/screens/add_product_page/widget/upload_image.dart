@@ -4,8 +4,8 @@ import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 
-class UploadImage extends GetView<AddProductPageController> {
-  const UploadImage({
+class UploadImageProduct extends GetView<AddProductPageController> {
+  const UploadImageProduct({
     super.key,
   });
 
@@ -20,7 +20,9 @@ class UploadImage extends GetView<AddProductPageController> {
         SizedBox(height: 20),
         Obx(
           () => GestureDetector(
-            onTap: controller.pickImage,
+            onTap: () {
+              controller.pickImage();
+            },
             child: Container(
               width: 150,
               height: 150,

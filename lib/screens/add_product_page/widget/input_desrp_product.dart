@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
+import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/module/product_model.dart';
 import 'package:quick_delivery_admin/screens/add_product_page/add_product_page_logic.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/text_field_custom.dart';
@@ -57,7 +58,7 @@ class InputDesProduct extends GetView<AddProductPageController> {
 }
 
 class ShowDetailes extends StatelessWidget {
-  final Product product;
+  final ProductsCardEntite product;
   const ShowDetailes({
     super.key,
     required this.product,
