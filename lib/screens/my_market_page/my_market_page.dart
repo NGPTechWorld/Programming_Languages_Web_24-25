@@ -12,6 +12,7 @@ class MyMarketPage extends GetView<MyMarketPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getMarket();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,36 +31,38 @@ class MyMarketPage extends GetView<MyMarketPageController> {
               Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Container()),
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.markets.length + 1,
-                  (index) => index == 0
-                      ? Container(
-                          padding: const EdgeInsets.all(AppPadding.p10),
-                          width: 400,
-                          height: 200,
-                          child: Padding(
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.markets.length + 1,
+                    (index) => index == 0
+                        ? Container(
                             padding: const EdgeInsets.all(AppPadding.p10),
-                            child: GestureDetector(
-                              onTap: () {
-                                controller.addMarket();
-                              },
-                              child: Card(
-                                color: ColorManager.primary3Color,
-                                child: Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    size: 50,
-                                    color: ColorManager.whiteColor,
+                            width: 400,
+                            height: 200,
+                            child: Padding(
+                              padding: const EdgeInsets.all(AppPadding.p10),
+                              child: GestureDetector(
+                                onTap: () {
+                                  controller.addMarket();
+                                },
+                                child: Card(
+                                  color: ColorManager.primary3Color,
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 50,
+                                      color: ColorManager.whiteColor,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      : MarketItem(market: controller.markets[index - 1]),
+                          )
+                        : MarketItem(market: controller.markets[index - 1]),
+                  ),
                 ),
               ),
             ],

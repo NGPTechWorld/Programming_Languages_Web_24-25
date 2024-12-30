@@ -11,6 +11,7 @@ class AllProductsPage extends GetView<AllProductsPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getAllProducts();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -29,13 +30,15 @@ class AllProductsPage extends GetView<AllProductsPageController> {
               Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Container()),
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.products.length,
-                  (index) =>
-                      ProductItemMarketCard(product: controller.products[index]),
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.products.length,
+                    (index) => ProductItemMarketCard(
+                        product: controller.products[index]),
+                  ),
                 ),
               ),
             ],

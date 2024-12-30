@@ -25,7 +25,7 @@ class MarketCardEntite {
       manager_id: json['manager_id'],
       nameEn: json['name_en'],
       nameAr: json['name_ar'],
-      image: json['image'], // قد يكون null
+      image: json['image'] ?? "", // قد يكون null
       manager_name: json['manager_name'],
       market_name_en: json['market_name_en'],
       market_name_ar: json['market_name_ar'],

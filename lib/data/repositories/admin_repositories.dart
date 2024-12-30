@@ -7,8 +7,10 @@ import 'package:quick_delivery_admin/app/services/api/dio_consumer.dart';
 import 'package:quick_delivery_admin/app/services/api/end_points.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
 import 'package:quick_delivery_admin/core/errors/error_handler.dart';
+import 'package:quick_delivery_admin/data/entities/Market_card_entite.dart';
 import 'package:quick_delivery_admin/data/entities/app_statistics.dart';
 import 'package:quick_delivery_admin/data/entities/login_entitie.dart';
+import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/module/manager_model.dart';
 
 abstract class AdminRepositories {
@@ -79,9 +81,21 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> deleteMarket({required int id}) {
-    // TODO: implement deleteMarket
-    throw UnimplementedError();
+  Future<AppResponse> deleteMarket({required int id}) async{
+   AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.deleteMarket + id.toString(),
+          method: Method.delete,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -98,9 +112,23 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getMarket() {
-    // TODO: implement getMarket
-    throw UnimplementedError();
+  Future<AppResponse> getMarket() async{
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getMarkets,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['markets'] as List<dynamic>;
+      response.data =
+          listData.map((json) => MarketCardEntite.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -110,9 +138,23 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getProducts() {
-    // TODO: implement getProducts
-    throw UnimplementedError();
+  Future<AppResponse> getProducts()async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getProducts,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['products'] as List<dynamic>;
+      response.data =
+          listData.map((json) => ProductsCardEntite.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -140,9 +182,23 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getTopProducts() {
-    // TODO: implement getTopProducts
-    throw UnimplementedError();
+  Future<AppResponse> getTopProducts()async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getTopProductsAdmin,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['products'] as List<dynamic>;
+      response.data =
+          listData.map((json) => ProductsCardEntite.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override

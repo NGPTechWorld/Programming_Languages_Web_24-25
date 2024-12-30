@@ -104,7 +104,7 @@ class MarketItem extends GetView<MyMarketPageController> {
                   ),
                   IconButton(
                     onPressed: () {
-                      controller.delete(market);
+                      controller.delete(market,context);
                     },
                     color: ColorManager.redColor,
                     icon: Icon(Icons.delete),

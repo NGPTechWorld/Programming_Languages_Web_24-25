@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
+import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
+import 'package:quick_delivery_admin/data/repositories/admin_repositories.dart';
 
 class AllProductsPageController extends GetxController {
   final searchController = TextEditingController();
+final adminRepositories = Get.find<ImpAdminRepositories>();
+  var loadingState = LoadingState.idle.obs;
+  var products = <ProductsCardEntite>[].obs;
 
-  var products = <ProductsCardEntite>[
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-    ProductsCardEntite.fromJson(dataProductTemp),
-  ];
+  getAllProducts() async {
+    loadingState.value = LoadingState.loading;
+    final response = await adminRepositories.getTopProducts();
+    if (response.success) {
+      products.value = response.data;
+    } else {
+      loadingState.value = LoadingState.hasError;
+    }
+  }
 }
 
 final dataProductTemp = {

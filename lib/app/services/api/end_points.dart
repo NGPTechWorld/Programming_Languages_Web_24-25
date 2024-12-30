@@ -12,7 +12,7 @@ class EndPoints {
   static const String delete = "/admins/delete/"; //{product}
   static const String getMarkets = "/admins/getMarkets";
   static const String getProducts = "/admins/getProducts/"; //{market}
-  static const String getTopProducts = "/admins/getTopProducts";
+  static const String getTopProductsAdmin = "/admins/getTopProducts";
   static const String getTopProductsMarket =
       "/admins/getTopProducts/"; //{market}
   static const String getAllOrders = "/admins/getAllOrders";

@@ -12,6 +12,7 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getTopProducts();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -36,13 +37,15 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
                 StringManager.TopSellerProduct.tr,
                 style: StyleManager.h2_Bold(),
               ),
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.products.length,
-                  (index) =>
-                      TopProductItemAdmin(product: controller.products[index]),
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.products.length,
+                    (index) => TopProductItemAdmin(
+                        product: controller.products[index]),
+                  ),
                 ),
               ),
             ],

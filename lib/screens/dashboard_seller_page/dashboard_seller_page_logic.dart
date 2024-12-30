@@ -24,7 +24,7 @@ class DashboardSellerPageController extends GetxController {
     }
   }
 
-  getStatisticsAdmin() async {
+  getStatisticsSeller() async {
     final response = await sellerRepositories.getStatistics();
     if (response.success) {
       marcketStatistics = response.data;

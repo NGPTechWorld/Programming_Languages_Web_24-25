@@ -13,6 +13,7 @@ class AdminMenuCard extends GetView<HomePageController> {
       children: [
         InkWell(
           onTap: () {
+            controller.refreshData("DashboardAdmin");
             controller.gotToPage(0);
           },
           child: MenuCard(
@@ -22,6 +23,7 @@ class AdminMenuCard extends GetView<HomePageController> {
         ),
         InkWell(
           onTap: () {
+            controller.refreshData("MyMarketsAdmin");
             controller.gotToPage(1);
           },
           child: MenuCard(
@@ -40,6 +42,7 @@ class AdminMenuCard extends GetView<HomePageController> {
         ),
         InkWell(
           onTap: () {
+            controller.refreshData("AllProductsAdmin");
             controller.gotToPage(3);
           },
           child: MenuCard(
@@ -56,7 +59,6 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.AllOrders.tr,
           ),
         ),
-  
       ],
     );
   }

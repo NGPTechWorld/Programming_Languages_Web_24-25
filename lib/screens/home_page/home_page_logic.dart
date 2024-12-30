@@ -105,11 +105,25 @@ class HomePageController extends GetxController {
       case "DashboardSeller":
         final controller = Get.find<DashboardSellerPageController>();
         controller.getTopProducts();
-        controller.getStatisticsAdmin();
+        controller.getStatisticsSeller();
         break;
       case "MyOrderdsSeller":
         final controller = Get.find<MyOrdersSellerPageController>();
         controller.getOrders();
+        break;
+      //
+      case "DashboardAdmin":
+        final controller = Get.find<DashboardAdminPageController>();
+        controller.getTopProducts();
+        controller.getStatisticsAdmin();
+        break;
+      case "MyMarketsAdmin":
+        final controller = Get.find<MyMarketPageController>();
+        controller.getMarket();
+        break;
+      case "AllProductsAdmin":
+        final controller = Get.find<AllProductsPageController>();
+        controller.getAllProducts();
         break;
     }
   }
@@ -152,6 +166,4 @@ class HomePageController extends GetxController {
       loadingState = LoadingState.hasError.obs;
     }
   }
-
-  
 }
