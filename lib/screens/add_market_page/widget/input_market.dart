@@ -22,7 +22,10 @@ class InputMarket extends GetView<AddMarketPageController> {
             StringManager.userName.tr,
             style: StyleManager.h4_Medium(),
           ),
-          TextFieldCustom(controller: controller.name_Controller),
+          Obx(() => TextFieldCustom(
+                controller: controller.name_Controller,
+                readOnly: controller.moniterMode.value,
+              )),
           SizedBox(height: 10),
           Text(
             StringManager.MarketNameAr.tr,
@@ -36,42 +39,47 @@ class InputMarket extends GetView<AddMarketPageController> {
           ),
           TextFieldCustom(controller: controller.market_name_en_Controller),
           SizedBox(height: 10),
-          Text(
-            StringManager.password.tr,
-            style: StyleManager.h4_Medium(),
-          ),
           Obx(
-            () => TextFieldCustom(
-              controller: controller.passwordController,
-              obscureText: controller.isVisablePass.value,
-              suffixIcon: InkWell(
-                child: Icon(Icons.lock_outline_rounded),
-                onTap: () {
-                  controller.isVisablePass.value =
-                      !controller.isVisablePass.value;
-                },
-              ),
-            ),
+            () => controller.moniterMode.value
+                ? Container()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        StringManager.password.tr,
+                        style: StyleManager.h4_Medium(),
+                      ),
+                      TextFieldCustom(
+                        controller: controller.passwordController,
+                        obscureText: controller.isVisablePass.value,
+                        suffixIcon: GestureDetector(
+                          child: Icon(Icons.lock_outline_rounded),
+                          onTap: () {
+                            controller.isVisablePass.value =
+                                !controller.isVisablePass.value;
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        StringManager.confirmPassword.tr,
+                        style: StyleManager.h4_Medium(),
+                      ),
+                      TextFieldCustom(
+                        controller: controller.password_confirmation_Controller,
+                        obscureText: controller.isVisableConfPass.value,
+                        suffixIcon: GestureDetector(
+                          child: Icon(Icons.lock_outline_rounded),
+                          onTap: () {
+                            controller.isVisableConfPass.value =
+                                !controller.isVisableConfPass.value;
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
           ),
-          SizedBox(height: 10),
-          Text(
-            StringManager.confirmPassword.tr,
-            style: StyleManager.h4_Medium(),
-          ),
-          Obx(
-            () => TextFieldCustom(
-              controller: controller.password_confirmation_Controller,
-              obscureText: controller.isVisableConfPass.value,
-              suffixIcon: InkWell(
-                child: Icon(Icons.lock_outline_rounded),
-                onTap: () {
-                  controller.isVisableConfPass.value =
-                      !controller.isVisableConfPass.value;
-                },
-              ),
-            ),
-          ),
-          SizedBox(height: 10),
         ],
       ),
     );

@@ -16,7 +16,7 @@ class ProductItem extends GetView<MyProductSellerPageController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
-      child: InkWell(
+      child: GestureDetector(
         child: Container(
           width: 200,
           //height: 300,
@@ -140,7 +140,7 @@ class CircleItem extends StatelessWidget {
     return SizedBox(
       height: AppSize.s24,
       child: Center(
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {},
           child: CircleAvatar(
             radius: AppSize.s30,

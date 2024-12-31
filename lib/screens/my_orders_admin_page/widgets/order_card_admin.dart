@@ -5,9 +5,10 @@ import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/module/order_model.dart';
+import 'package:quick_delivery_admin/screens/my_orders_admin_page/my_orders_admin_page_logic.dart';
 import 'package:quick_delivery_admin/screens/my_orders_seller_page/widgets/status_label.dart';
 
-class OrderCardAdmin extends StatelessWidget {
+class OrderCardAdmin extends GetView<MyOrdersAdminPageController> {
   const OrderCardAdmin({
     super.key,
     required this.orderModel,
@@ -159,8 +160,12 @@ class OrderCardAdmin extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                StringManager.total_cost.tr + orderModel.totalCost.toString(),
-                style: StyleManager.body02_Semibold(),
+                StringManager.total_cost.tr +
+                    orderModel.totalCost.toString() +
+                    StringManager.orderDetailsSyrianPounds.tr,
+                style: StyleManager.body01_Semibold(
+                  color: ColorManager.primary5Color,
+                ),
               ),
             ],
           ),
@@ -190,21 +195,53 @@ class OrderCardAdmin extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                StatusLabel(statusId: 4),
+                                GestureDetector(
+                                    onTap: () {
+                                      controller.rejectOrder(
+                                          orderModel, context);
+                                    },
+                                    child: StatusLabel(statusId: 4)),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                StatusLabel(statusId: 2),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                StatusLabel(statusId: 3),
+                                GestureDetector(
+                                    onTap: () {
+                                      controller.deliverOrder(
+                                          orderModel, context);
+                                    },
+                                    child: StatusLabel(statusId: 2)),
                               ],
                             )
                           ],
                         ),
                       )
-                    : Container()
+                    : Container(),
+                orderModel.statusId == 2
+                    ? Container(
+                        decoration: BoxDecoration(
+                            color: ColorManager.primary2Color,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        child: Column(
+                          children: [
+                            Text(
+                              "choose status:",
+                              style: StyleManager.body02_Semibold(),
+                            ),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                    onTap: () {
+                                      controller.completeOrder(
+                                          orderModel, context);
+                                    },
+                                    child: StatusLabel(statusId: 3)),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    : Container(),
               ],
             ),
           ),

@@ -24,7 +24,8 @@ class MyMarketPageController extends GetxController {
   }
 
   goToMarket(MarketCardEntite market) {
-    //TODO:  marketProductController.products = API
+    marketProductController.id = market.id;
+    marketProductController.getAllProducts();
     homeController.indexPageSeller.value = 7;
   }
 
@@ -46,7 +47,8 @@ class MyMarketPageController extends GetxController {
 
   delete(MarketCardEntite market, BuildContext context) async {
     loadingState.value = LoadingState.loading;
-    final response = await adminRepositories.deleteMarket(id: market.id);
+    final response =
+        await adminRepositories.deleteMarket(id: market.manager_id);
     if (response.success) {
       SnackBarCustom.show(context, StringManager.deletetMarket.tr);
       getMarket();

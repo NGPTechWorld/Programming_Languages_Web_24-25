@@ -226,11 +226,15 @@ class StringManager {
   static const number_of_orders = "number_of_orders";
   static const AddManager = "AddManager";
   static const AllProductsMarkect = "AllProductsMarkect";
-  //
   static const addedProduct = "addedProduct";
   static const deletedProduct = "deletedProduct";
   static const editedProduct = "editedProduct";
   static const rejectOrder = "rejectOrder";
   static const completeOrder = "completeOrder";
+  //
   static const deletetMarket = "deletetMarket";
+  static const addedMarket = "addedMarket";
+  static const deliverOrder = "deliverOrder";
+  static const editedMarket = "editedMarket";
+  static const addedMaanger = "addedMaanger";
 }

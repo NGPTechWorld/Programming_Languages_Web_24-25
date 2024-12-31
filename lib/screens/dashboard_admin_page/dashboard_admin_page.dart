@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/assets_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
@@ -37,16 +38,24 @@ class DashboardAdminPage extends GetView<DashboardAdminPageController> {
                 StringManager.TopSellerProduct.tr,
                 style: StyleManager.h2_Bold(),
               ),
-              Obx(
-                () => Wrap(
-                  spacing: 16.0,
-                  runSpacing: 16.0,
-                  children: List.generate(
-                    controller.products.length,
-                    (index) => TopProductItemAdmin(
-                        product: controller.products[index]),
+              Align(
+                alignment: AlignmentDirectional.topStart,
+                child: Obx(
+                  () => Wrap(
+                    spacing: 16.0,
+                    runSpacing: 16.0,
+                    children: List.generate(
+                      controller.products.length,
+                      (index) => TopProductItemAdmin(
+                          product: controller.products[index]),
+                    ),
                   ),
                 ),
+              ),
+              Center(
+                child: Obx(() => controller.products.length == 0
+                    ? Image.asset(AssetsManager.emptyBoxImage)
+                    : Container()),
               ),
             ],
           ),

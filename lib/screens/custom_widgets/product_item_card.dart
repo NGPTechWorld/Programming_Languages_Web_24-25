@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
@@ -15,7 +16,7 @@ class ProductItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {},
         child: Container(
           width: 200,
@@ -29,6 +30,7 @@ class ProductItemCard extends StatelessWidget {
             children: [
               Center(
                 child: Container(
+                  padding: EdgeInsets.all(AppPadding.p10),
                   height: 200,
                   width: 200,
                   child: Image.network(
@@ -75,8 +77,10 @@ class ProductItemCard extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: "\n\n" + product.price.toString() + " ",
-                        style: StyleManager.body01_Semibold(
+                        text: "\n\n" +
+                            product.price.toString() +
+                            StringManager.orderDetailsSyrianPounds.tr,
+                        style: StyleManager.h4_Bold(
                           color: ColorManager.primary5Color,
                         ),
                       ),

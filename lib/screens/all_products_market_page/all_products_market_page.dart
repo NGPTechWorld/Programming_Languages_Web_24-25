@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/assets_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
@@ -35,19 +36,26 @@ class AllProductsMarketPage extends GetView<AllProductsMarketPageController> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: Container()),
-              Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                children: List.generate(
-                  controller.products.length,
-                  (index) =>
-                      ProductItemCard(product: controller.products[index]),
+              Obx(
+                () => Wrap(
+                  spacing: 16.0,
+                  runSpacing: 16.0,
+                  children: List.generate(
+                    controller.products.length,
+                    (index) =>
+                        ProductItemCard(product: controller.products[index]),
+                  ),
                 ),
+              ),
+              Center(
+                child: Obx(() => controller.products.length == 0
+                    ? Image.asset(AssetsManager.emptyBoxImage)
+                    : Container()),
               ),
             ],
           ),

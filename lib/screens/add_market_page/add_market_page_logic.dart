@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker_web/image_picker_web.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/data/entities/Market_card_entite.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
@@ -20,29 +19,23 @@ class AddMarketPageController extends GetxController {
   var loadingState = LoadingState.idle.obs;
   final isVisablePass = true.obs;
   final isVisableConfPass = true.obs;
-  Rx<String> imageSelectedPath = ''.obs;
+  String? imageURL;
+  int? idMarket;
+  Rx<String> imageName = ''.obs;
   Rx<Uint8List?> imageBytes = Rx<Uint8List?>(null);
-  final adminRepositories = Get.find<ImpAdminRepositories>();
 
-  Future<void> pickImage() async {
-    final file = await ImagePickerWeb.getImageAsBytes();
-    if (file != null) {
-      imageBytes.value = file;
-      imageSelectedPath.value = '';
-    }
-  }
+  final adminRepositories = Get.find<ImpAdminRepositories>();
 
   void fillMarket(MarketCardEntite market) {
     name_Controller.text = market.manager_name;
     market_name_en_Controller.text = market.nameEn;
     market_name_ar_Controller.text = market.nameAr;
+    idMarket = market.manager_id;
+    imageURL = (market.image!);
+    update();
   }
 
   void addMarket(BuildContext context) async {
-    if (imageBytes.value == null) {
-      SnackBarCustom.show(context, StringManager.UploadProductImage.tr);
-      return;
-    }
     loadingState.value = LoadingState.loading;
     final response = await adminRepositories.addMarket(
         name: name_Controller.text,
@@ -51,10 +44,26 @@ class AddMarketPageController extends GetxController {
         password: passwordController.text,
         password_confirmation: password_confirmation_Controller.text);
     if (response.success) {
-      SnackBarCustom.show(context, StringManager.addedProduct.tr);
-      //myProductController.getProducts(context);
-     // uploadImage(response.data);
-      homeController.refreshData("MyManagersAdmin");
+      SnackBarCustom.show(context, StringManager.addedMarket.tr);
+      homeController.refreshData("MyMarketssAdmin");
+      calnsel();
+      loadingState.value = LoadingState.doneWithData;
+    } else {
+      SnackBarCustom.show(context, response.networkFailure!.message);
+      loadingState.value = LoadingState.hasError;
+    }
+  }
+
+  void editMarket(BuildContext context) async {
+    loadingState.value = LoadingState.loading;
+    final response = await adminRepositories.editMarket(
+      id: idMarket!,
+      name_en: market_name_en_Controller.text,
+      name_ar: market_name_ar_Controller.text,
+    );
+    if (response.success) {
+      SnackBarCustom.show(context, StringManager.editedMarket.tr);
+      homeController.refreshData("MyMarketssAdmin");
       calnsel();
       loadingState.value = LoadingState.doneWithData;
     } else {
@@ -74,6 +83,8 @@ class AddMarketPageController extends GetxController {
             passwordController.text = "";
 
     imageBytes = Rx<Uint8List?>(null);
-    imageSelectedPath = ''.obs;
+    imageBytes = Rx<Uint8List?>(null);
+    update();
+    imageName = ''.obs;
   }
 }

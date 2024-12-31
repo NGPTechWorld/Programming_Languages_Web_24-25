@@ -25,14 +25,14 @@ class InputMarager extends GetView<AddManagerPageController> {
           TextFieldCustom(controller: controller.name_Controller),
           SizedBox(height: 10),
           Text(
-            StringManager.MarketNameAr.tr,
+            StringManager.EnterPassword.tr,
             style: StyleManager.h4_Medium(),
           ),
           Obx(
             () => TextFieldCustom(
               controller: controller.passwordController,
               obscureText: controller.isVisablePass.value,
-              suffixIcon: InkWell(
+              suffixIcon: GestureDetector(
                 child: Icon(Icons.lock_outline_rounded),
                 onTap: () {
                   controller.isVisablePass.value =
@@ -50,7 +50,7 @@ class InputMarager extends GetView<AddManagerPageController> {
             () => TextFieldCustom(
               controller: controller.password_confirmation_Controller,
               obscureText: controller.isVisableConfPass.value,
-              suffixIcon: InkWell(
+              suffixIcon: GestureDetector(
                 child: Icon(Icons.lock_outline_rounded),
                 onTap: () {
                   controller.isVisableConfPass.value =

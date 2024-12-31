@@ -9,9 +9,9 @@ import 'package:quick_delivery_admin/app/services/local_storage/cache_services_w
 import 'package:quick_delivery_admin/core/errors/error_handler.dart';
 import 'package:quick_delivery_admin/data/entities/Market_card_entite.dart';
 import 'package:quick_delivery_admin/data/entities/app_statistics.dart';
-import 'package:quick_delivery_admin/data/entities/login_entitie.dart';
+import 'package:quick_delivery_admin/data/entities/manager_card_entitie.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
-import 'package:quick_delivery_admin/data/module/manager_model.dart';
+import 'package:quick_delivery_admin/data/module/order_model.dart';
 
 abstract class AdminRepositories {
   Future<AppResponse> addMarket(
@@ -24,10 +24,8 @@ abstract class AdminRepositories {
       {required String name,
       required String password,
       required String password_confirmation});
-  Future<AppResponse> editMarket({
-    required String name_en,
-    required String name_ar,
-  });
+  Future<AppResponse> editMarket(
+      {required String name_en, required String name_ar, required int id});
   Future<AppResponse> completeOrder({required int id});
   Future<AppResponse> deliverOrder({required int id});
   Future<AppResponse> rejectOrder({required int id});
@@ -40,6 +38,7 @@ abstract class AdminRepositories {
   });
   Future<AppResponse> getTopProducts();
   Future<AppResponse> getOrders();
+  Future<AppResponse> getAdmins();
   Future<AppResponse> getStatistics();
 }
 
@@ -52,9 +51,25 @@ class ImpAdminRepositories implements AdminRepositories {
   Future<AppResponse> addAdmin(
       {required String name,
       required String password,
-      required String password_confirmation}) {
-    // TODO: implement addAdmin
-    throw UnimplementedError();
+      required String password_confirmation}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.addAdmin,
+          method: Method.post,
+          requiredToken: true,
+          params: {
+            "name": name,
+            "password": password,
+            "password_confirmation": password_confirmation
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data["admin"]['id'];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -63,15 +78,45 @@ class ImpAdminRepositories implements AdminRepositories {
       required String market_name_en,
       required String market_name_ar,
       required String password,
-      required String password_confirmation}) {
-    // TODO: implement addMarket
-    throw UnimplementedError();
+      required String password_confirmation}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.addMarket,
+          method: Method.post,
+          requiredToken: true,
+          params: {
+            "name": name,
+            "market_name_en": market_name_en,
+            "market_name_ar": market_name_ar,
+            "password": password,
+            "password_confirmation": password_confirmation
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data["manager"]['id'];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
-  Future<AppResponse> completeOrder({required int id}) {
-    // TODO: implement completeOrder
-    throw UnimplementedError();
+  Future<AppResponse> completeOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.completeOrder + id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -81,8 +126,8 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> deleteMarket({required int id}) async{
-   AppResponse response = AppResponse(success: false);
+  Future<AppResponse> deleteMarket({required int id}) async {
+    AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
           url: EndPoints.baserUrl + EndPoints.deleteMarket + id.toString(),
@@ -99,20 +144,49 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> deliverOrder({required int id}) {
-    // TODO: implement deliverOrder
-    throw UnimplementedError();
+  Future<AppResponse> deliverOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.deliverOrder + id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
   Future<AppResponse> editMarket(
-      {required String name_en, required String name_ar}) {
-    // TODO: implement editMarket
-    throw UnimplementedError();
+      {required String name_en,
+      required String name_ar,
+      required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.editMarket + id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {
+            "name_en": name_en,
+            "name_ar": name_ar,
+          });
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data["market"]['id'];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
-  Future<AppResponse> getMarket() async{
+  Future<AppResponse> getMarket() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
@@ -132,13 +206,27 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getOrders() {
-    // TODO: implement getOrders
-    throw UnimplementedError();
+  Future<AppResponse> getOrders() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getOrders,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['orders'] as List<dynamic>;
+      response.data =
+          listData.map((json) => OrderModel.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
-  Future<AppResponse> getProducts()async {
+  Future<AppResponse> getProducts() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
@@ -158,9 +246,23 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getProductsMarket({required int id}) {
-    // TODO: implement getProductsMarket
-    throw UnimplementedError();
+  Future<AppResponse> getProductsMarket({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getProductsMarket + id.toString(),
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['products'] as List<dynamic>;
+      response.data =
+          listData.map((json) => ProductsCardEntite.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 
   @override
@@ -182,7 +284,7 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> getTopProducts()async {
+  Future<AppResponse> getTopProducts() async {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
@@ -202,8 +304,40 @@ class ImpAdminRepositories implements AdminRepositories {
   }
 
   @override
-  Future<AppResponse> rejectOrder({required int id}) {
-    // TODO: implement rejectOrder
-    throw UnimplementedError();
+  Future<AppResponse> rejectOrder({required int id}) async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.rejectOrder + id.toString(),
+          method: Method.put,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      response.data = data[ApiKey.message];
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
+  }
+
+  @override
+  Future<AppResponse> getAdmins() async {
+    AppResponse response = AppResponse(success: false);
+    try {
+      response.data = await api.request(
+          url: EndPoints.baserUrl + EndPoints.getAdmins,
+          method: Method.get,
+          requiredToken: true,
+          params: {});
+      final data = jsonDecode(response.data.toString()) as Map<String, dynamic>;
+      final listData = data['admins'] as List<dynamic>;
+      response.data =
+          listData.map((json) => ManagerCardEntitie.fromJson(json)).toList();
+      response.success = true;
+    } on ErrorHandler catch (e) {
+      response.networkFailure = e.failure;
+    }
+    return response;
   }
 }

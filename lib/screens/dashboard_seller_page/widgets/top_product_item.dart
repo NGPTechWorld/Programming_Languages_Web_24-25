@@ -16,7 +16,7 @@ class TopProductItem extends GetView<DashboardSellerPageController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p10),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {},
         child: Container(
           width: 200,

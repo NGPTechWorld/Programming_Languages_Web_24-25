@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
+import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
@@ -84,8 +85,10 @@ class TopProductItemAdmin extends GetView<DashboardSellerPageController> {
                       ),
                     ),
                     TextSpan(
-                      text: "\n\n" + product.price.toString() + " ",
-                      style: StyleManager.body01_Semibold(
+                      text: "\n\n" +
+                          product.price.toString() +
+                          StringManager.orderDetailsSyrianPounds.tr,
+                      style: StyleManager.h4_Bold(
                         color: ColorManager.primary5Color,
                       ),
                     ),

@@ -47,7 +47,7 @@ class MenuBarCustom extends GetView<HomePageController> {
             managerCurrent!.role == "seller"
                 ? SellerMenuCard()
                 : AdminMenuCard(),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 controller.languageOnTap();
               },
@@ -56,7 +56,7 @@ class MenuBarCustom extends GetView<HomePageController> {
                 title: StringManager.languageDialogTitle.tr,
               ),
             ),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 controller.logout(context);
               },

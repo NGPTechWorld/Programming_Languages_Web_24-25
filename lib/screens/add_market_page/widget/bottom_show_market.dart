@@ -37,7 +37,9 @@ class BottomShowMarket extends GetView<AddMarketPageController> {
               width: 200,
               child: controller.moniterMode.value
                   ? BottouCustom(
-                      function: () {},
+                      function: () {
+                         controller.editMarket(context);
+                      },
                       text: StringManager.EditMarket.tr,
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.firstDarkColor,
@@ -46,7 +48,9 @@ class BottomShowMarket extends GetView<AddMarketPageController> {
                           controller.loadingState.value == LoadingState.loading,
                     )
                   : BottouCustom(
-                      function: () {},
+                      function: () {
+                        controller.addMarket(context);
+                      },
                       text: StringManager.AddMarket.tr,
                       textColor: ColorManager.whiteColor,
                       background: ColorManager.secoundColor,

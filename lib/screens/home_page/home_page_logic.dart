@@ -38,7 +38,6 @@ import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_s
 import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page_logic.dart';
-import 'package:http/http.dart' as http;
 
 class HomePageBinging extends Bindings {
   @override
@@ -117,13 +116,21 @@ class HomePageController extends GetxController {
         controller.getTopProducts();
         controller.getStatisticsAdmin();
         break;
-      case "MyMarketsAdmin":
+      case "MyMarketssAdmin":
         final controller = Get.find<MyMarketPageController>();
         controller.getMarket();
         break;
       case "AllProductsAdmin":
         final controller = Get.find<AllProductsPageController>();
         controller.getAllProducts();
+        break;
+      case "MyOrdersAdmin":
+        final controller = Get.find<MyOrdersAdminPageController>();
+        controller.getOrders();
+        break;
+         case "MyManagersAdmin":
+        final controller = Get.find<MyManagersAdminPageController>();
+        controller.getManages();
         break;
     }
   }

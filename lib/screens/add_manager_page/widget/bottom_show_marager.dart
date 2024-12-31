@@ -36,7 +36,9 @@ class BottomShowManager extends GetView<AddManagerPageController> {
             () => SizedBox(
               width: 200,
               child: BottouCustom(
-                function: () {},
+                function: () {
+                  controller.addManager(context);
+                },
                 text: StringManager.AddManager.tr,
                 textColor: ColorManager.whiteColor,
                 background: ColorManager.secoundColor,

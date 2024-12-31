@@ -8,8 +8,6 @@ import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
 import 'package:quick_delivery_admin/data/repositories/manager_repositories.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/helper_widget.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
-import 'package:quick_delivery_admin/screens/home_page/home_page.dart';
-import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page.dart';
 import 'package:quick_delivery_admin/screens/start_page/start_page_logic.dart';
 

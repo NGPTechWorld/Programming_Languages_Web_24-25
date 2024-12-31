@@ -11,7 +11,7 @@ class AdminMenuCard extends GetView<HomePageController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("DashboardAdmin");
             controller.gotToPage(0);
@@ -21,7 +21,7 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.Dashboard.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("MyMarketsAdmin");
             controller.gotToPage(1);
@@ -31,8 +31,10 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.MyMarkets.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
+            controller.refreshData("MyManagersAdmin");
+
             controller.gotToPage(2);
           },
           child: MenuCard(
@@ -40,7 +42,7 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.MYManagers.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("AllProductsAdmin");
             controller.gotToPage(3);
@@ -50,8 +52,9 @@ class AdminMenuCard extends GetView<HomePageController> {
             title: StringManager.AllProducts.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
+            controller.refreshData("MyOrdersAdmin");
             controller.gotToPage(4);
           },
           child: MenuCard(

@@ -14,7 +14,7 @@ class MarketItem extends GetView<MyMarketPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         controller.goToMarket(market);
       },
@@ -104,7 +104,7 @@ class MarketItem extends GetView<MyMarketPageController> {
                   ),
                   IconButton(
                     onPressed: () {
-                      controller.delete(market,context);
+                      controller.delete(market, context);
                     },
                     color: ColorManager.redColor,
                     icon: Icon(Icons.delete),
@@ -133,7 +133,7 @@ class CircleItem extends StatelessWidget {
     return SizedBox(
       height: AppSize.s24,
       child: Center(
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {},
           child: CircleAvatar(
             radius: AppSize.s30,

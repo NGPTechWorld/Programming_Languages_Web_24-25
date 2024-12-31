@@ -3,6 +3,7 @@ class EndPoints {
 
   //Admin
   static const String addMarket = "/admins/addMarket";
+  static const String getAdmins = "/admins/admins";
   static const String addAdmin = "/admins/addAdmin";
   static const String editMarket = "/admins/editMarket/"; //{manager}
   static const String completeOrder = "/admins/completeOrder/"; //{order}
@@ -11,7 +12,8 @@ class EndPoints {
   static const String deleteMarket = "/admins/deleteMarket/"; //{manager}
   static const String delete = "/admins/delete/"; //{product}
   static const String getMarkets = "/admins/getMarkets";
-  static const String getProducts = "/admins/getProducts/"; //{market}
+  static const String getProducts = "/admins/getProducts"; //{market}
+  static const String getProductsMarket = "/admins/getProducts/"; //{market}
   static const String getTopProductsAdmin = "/admins/getTopProducts";
   static const String getTopProductsMarket =
       "/admins/getTopProducts/"; //{market}

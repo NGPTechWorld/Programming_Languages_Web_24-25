@@ -16,28 +16,29 @@ class MyOrdersSellerPageController extends GetxController {
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.getOrders();
     if (response.success) {
-      orders.value = response.data;
+      final list = response.data as List<OrderModel>;
+      orders.value = list.reversed.toList();
     } else {
       loadingState.value = LoadingState.hasError;
     }
   }
 
-  rejectOrder(OrderModel mYrder,BuildContext context) async {
+  rejectOrder(OrderModel mYrder, BuildContext context) async {
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.rejectOrder(id: mYrder.id);
     if (response.success) {
-       SnackBarCustom.show(context, StringManager.rejectOrder.tr);
+      SnackBarCustom.show(context, StringManager.rejectOrder.tr);
       getOrders();
     } else {
       loadingState.value = LoadingState.hasError;
     }
   }
 
-  completeOrder(OrderModel mYrder,BuildContext context) async {
+  completeOrder(OrderModel mYrder, BuildContext context) async {
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.completeOrder(id: mYrder.id);
     if (response.success) {
-       SnackBarCustom.show(context, StringManager.completeOrder.tr);
+      SnackBarCustom.show(context, StringManager.completeOrder.tr);
       getOrders();
     } else {
       loadingState.value = LoadingState.hasError;

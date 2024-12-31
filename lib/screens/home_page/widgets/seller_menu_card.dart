@@ -11,7 +11,7 @@ class SellerMenuCard extends GetView<HomePageController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("DashboardSeller");
             controller.gotToPage(0);
@@ -21,7 +21,7 @@ class SellerMenuCard extends GetView<HomePageController> {
             title: StringManager.Dashboard.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("MyProductSeller");
             controller.gotToPage(1);
@@ -31,7 +31,7 @@ class SellerMenuCard extends GetView<HomePageController> {
             title: StringManager.MyProducts.tr,
           ),
         ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             controller.refreshData("MyOrderdsSeller");
             controller.gotToPage(2);

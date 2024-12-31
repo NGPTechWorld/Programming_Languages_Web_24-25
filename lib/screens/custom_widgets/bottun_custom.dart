@@ -23,8 +23,10 @@ class BottouCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () => function(),
+    return GestureDetector(
+        onTap: () {
+          if (loading == false) function();
+        },
         child: Container(
           height: AppSizeScreen.screenHeight * 0.07,
           width: width == null ? AppSizeScreen.screenWidth / 2 : width,

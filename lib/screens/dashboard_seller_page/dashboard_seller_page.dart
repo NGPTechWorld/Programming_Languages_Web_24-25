@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/assets_manager.dart';
 import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
@@ -26,7 +27,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(),
               MyMarketInfo(),
@@ -37,16 +38,24 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
                 StringManager.TopSellerProduct.tr,
                 style: StyleManager.h2_Bold(),
               ),
-              Obx(
-                () => Wrap(
-                  spacing: 16.0,
-                  runSpacing: 16.0,
-                  children: List.generate(
-                    controller.products.length,
-                    (index) =>
-                        TopProductItem(product: controller.products[index]),
+              Align(
+                alignment: AlignmentDirectional.topStart,
+                child: Obx(
+                  () => Wrap(
+                    spacing: 16.0,
+                    runSpacing: 16.0,
+                    children: List.generate(
+                      controller.products.length,
+                      (index) =>
+                          TopProductItem(product: controller.products[index]),
+                    ),
                   ),
                 ),
+              ),
+              Center(
+                child: Obx(() => controller.products.length == 0
+                    ? Image.asset(AssetsManager.emptyBoxImage)
+                    : Container()),
               ),
             ],
           ),

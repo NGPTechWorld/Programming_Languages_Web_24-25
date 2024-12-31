@@ -37,7 +37,9 @@ class AddMarketPage extends GetView<AddMarketPageController> {
                 children: [
                   InputMarket(),
                   SizedBox(width: 50),
-                  UploadImageMarket()
+                  controller.moniterMode.value
+                      ? UploadImageMarket()
+                      : Container()
                 ],
               ),
               SizedBox(height: 20),

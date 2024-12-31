@@ -20,7 +20,7 @@ class UploadImageMarket extends GetView<AddMarketPageController> {
         SizedBox(height: 20),
         Obx(
           () => GestureDetector(
-            onTap: controller.pickImage,
+           
             child: Container(
               width: 150,
               height: 150,

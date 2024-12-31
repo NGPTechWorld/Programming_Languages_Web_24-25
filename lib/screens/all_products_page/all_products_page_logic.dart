@@ -12,7 +12,7 @@ final adminRepositories = Get.find<ImpAdminRepositories>();
 
   getAllProducts() async {
     loadingState.value = LoadingState.loading;
-    final response = await adminRepositories.getTopProducts();
+    final response = await adminRepositories.getProducts();
     if (response.success) {
       products.value = response.data;
     } else {

@@ -36,7 +36,7 @@ class InputLogin extends GetView<LoginPageController> {
             () => TextFieldCustom(
               controller: controller.passwordController,
               obscureText: controller.isVisablePass.value,
-              suffixIcon: InkWell(
+              suffixIcon: GestureDetector(
                 child: Icon(Icons.lock_outline_rounded),
                 onTap: () {
                   controller.isVisablePass.value =
@@ -49,13 +49,13 @@ class InputLogin extends GetView<LoginPageController> {
             height: AppSizeScreen.screenHeight * 0.01,
           ),
           Obx(
-            ()=> BottouCustom(
+            () => BottouCustom(
               function: () {
                 controller.login(context);
               },
               text: StringManager.Enter.tr,
               textColor: ColorManager.whiteColor,
-              loading: controller.loadingState.value== LoadingState.loading,
+              loading: controller.loadingState.value == LoadingState.loading,
             ),
           )
         ],
