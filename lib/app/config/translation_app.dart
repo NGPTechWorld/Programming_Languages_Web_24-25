@@ -192,6 +192,11 @@ class TranslationApp implements Translations {
           StringManager.editedProduct: "تم تعديل المنتج",
           StringManager.rejectOrder: "تم رفض الطلب",
           StringManager.completeOrder: "تم تأكيد الطلب",
+          StringManager.addedMarket: "تمت إضافة المتجر",
+          StringManager.deliverOrder: "جاري توصيل الطلب",
+          StringManager.editedMarket: "تم تعديل المتجر",
+          StringManager.addedMaanger: "تمت إضافة المدير",
+          StringManager.UpdatedImageSeller: "تمت تعديل صورة المتجر",
         },
         "en": {
           //Sign Up
@@ -383,6 +388,12 @@ class TranslationApp implements Translations {
           StringManager.editedProduct: "Edited Product",
           StringManager.rejectOrder: "Rejected Order",
           StringManager.completeOrder: "Completed Order",
+          StringManager.deletetMarket: "deletetMarket",
+          StringManager.addedMarket: "Added Market",
+          StringManager.deliverOrder: "Delivered Order",
+          StringManager.editedMarket: "Edited Market",
+          StringManager.addedMaanger: "Added Maanger",
+          StringManager.UpdatedImageSeller: "Updates Image Market",
         },
       };
 }

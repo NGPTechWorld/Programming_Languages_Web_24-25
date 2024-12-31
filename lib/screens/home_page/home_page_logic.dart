@@ -1,6 +1,4 @@
-import 'dart:typed_data';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quick_delivery_admin/app/services/local_storage/cache_services_with_sharedpreferences.dart';
@@ -105,6 +103,7 @@ class HomePageController extends GetxController {
         final controller = Get.find<DashboardSellerPageController>();
         controller.getTopProducts();
         controller.getStatisticsSeller();
+        controller.getImage();
         break;
       case "MyOrderdsSeller":
         final controller = Get.find<MyOrdersSellerPageController>();
@@ -128,7 +127,7 @@ class HomePageController extends GetxController {
         final controller = Get.find<MyOrdersAdminPageController>();
         controller.getOrders();
         break;
-         case "MyManagersAdmin":
+      case "MyManagersAdmin":
         final controller = Get.find<MyManagersAdminPageController>();
         controller.getManages();
         break;

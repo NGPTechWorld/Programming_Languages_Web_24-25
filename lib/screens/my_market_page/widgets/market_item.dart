@@ -36,6 +36,7 @@ class MarketItem extends GetView<MyMarketPageController> {
               children: [
                 Center(
                   child: Container(
+                    padding: EdgeInsets.all(AppPadding.p24),
                     height: 200,
                     width: 200,
                     child: Image.network(

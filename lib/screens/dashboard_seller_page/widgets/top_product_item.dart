@@ -30,6 +30,7 @@ class TopProductItem extends GetView<DashboardSellerPageController> {
             children: [
               Center(
                 child: Container(
+                  padding: EdgeInsets.all(AppPadding.p10),
                   height: 200,
                   width: 200,
                   child: Image.network(

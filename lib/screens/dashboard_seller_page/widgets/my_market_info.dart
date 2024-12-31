@@ -37,23 +37,39 @@ class MyMarketInfo extends GetView<DashboardSellerPageController> {
                   borderRadius: BorderRadius.all(Radius.circular(15))),
               child: Row(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 200,
-                    child: Image.network(
-                      "",
-                      height: 200,
-                      width: 200,
-                      errorBuilder: (context, error, stackTrace) {
-                        return ShimmerPlaceholder(height: 150, width: 150);
+                  GetBuilder<DashboardSellerPageController>(
+                    builder: (controller) => GestureDetector(
+                      onTap: () {
+                        controller.pickImage(context);
                       },
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent? loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        }
-                        return ShimmerPlaceholder(height: 150, width: 150);
-                      },
+                      child: Container(
+                        padding: EdgeInsets.all(AppPadding.p10),
+                        height: 200,
+                        width: 200,
+                        child: Image.network(
+                          controller.marketImage == null
+                              ? ""
+                              : controller.marketImage!,
+                          height: 200,
+                          width: 200,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  color: Colors.grey),
+                              child: Center(
+                                  child: Text(StringManager.SelectImage.tr)),
+                            );
+                          },
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return ShimmerPlaceholder(height: 150, width: 150);
+                          },
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(

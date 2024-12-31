@@ -237,4 +237,5 @@ class StringManager {
   static const deliverOrder = "deliverOrder";
   static const editedMarket = "editedMarket";
   static const addedMaanger = "addedMaanger";
+  static const UpdatedImageSeller = "UpdatedImageSeller";
 }

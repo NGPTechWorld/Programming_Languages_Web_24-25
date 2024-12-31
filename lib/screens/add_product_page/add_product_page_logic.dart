@@ -5,14 +5,10 @@ import 'package:image_picker_web/image_picker_web.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
-import 'package:quick_delivery_admin/data/module/product_model.dart';
 import 'package:quick_delivery_admin/data/repositories/seller_repositories.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
-import 'package:quick_delivery_admin/screens/my_product_seller_page/my_product_seller_page_logic.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:file_picker/file_picker.dart';
-import 'dart:typed_data';
 
 class AddProductPageBinding extends Bindings {
   @override

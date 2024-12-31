@@ -13,6 +13,7 @@ class DashboardSellerPage extends GetView<DashboardSellerPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getImage();
     controller.getTopProducts();
     return Scaffold(
       appBar: AppBar(
