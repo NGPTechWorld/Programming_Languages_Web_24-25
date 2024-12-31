@@ -5,6 +5,7 @@ import 'package:image_picker_web/image_picker_web.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/data/entities/products-card_entite.dart';
 import 'package:quick_delivery_admin/data/enums/loading_state_enum.dart';
+import 'package:quick_delivery_admin/data/module/category_model.dart';
 import 'package:quick_delivery_admin/data/repositories/seller_repositories.dart';
 import 'package:quick_delivery_admin/screens/custom_widgets/snack_bar_error.dart';
 import 'package:quick_delivery_admin/screens/home_page/home_page_logic.dart';
@@ -36,11 +37,7 @@ class AddProductPageController extends GetxController {
   Rx<String> imageName = ''.obs;
   Rx<Uint8List?> imageBytes = Rx<Uint8List?>(null);
 
-  var categories = [
-    {'id': 1, 'name': 'Category 1'},
-    {'id': 2, 'name': 'Category 2'},
-    {'id': 3, 'name': 'Category 3'},
-  ];
+  var categories = <CategoryModel>[].obs;
 
   Future<void> pickImage() async {
     try {
@@ -99,11 +96,14 @@ class AddProductPageController extends GetxController {
     }
   }
 
+  getCategorys() async {
+    final response = await sellerRepositories.getCategorys();
+    if (response.success) {
+      categories.value = response.data;
+    } else {}
+  }
+
   editProduct(BuildContext context) async {
-    if (imageBytes.value == null) {
-      SnackBarCustom.show(context, StringManager.UploadProductImage.tr);
-      return;
-    }
     loadingState.value = LoadingState.loading;
     final response = await sellerRepositories.editProduct(
         name_en: nameENController.text,
@@ -121,6 +121,9 @@ class AddProductPageController extends GetxController {
       SnackBarCustom.show(context, StringManager.editedProduct.tr);
       // myProductController.getProducts(context);
       //uploadImage(response.data);
+      if (imageBytes.value != null) {
+        uploadImage(idProduct!);
+      }
       homeController.refreshData("MyProductSeller");
       calnsel();
       loadingState.value = LoadingState.doneWithData;
@@ -132,6 +135,8 @@ class AddProductPageController extends GetxController {
 
   void calnsel() {
     clearData();
+    homeController.refreshData("MyProductSeller");
+
     homeController.indexPageSeller.value = 1;
   }
 

@@ -29,7 +29,8 @@ class UploadImageProduct extends GetView<AddProductPageController> {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
               ),
-              child: controller.moniterMode.value
+              child: controller.moniterMode.value &&
+                      controller.imageBytes.value == null
                   ? Image.network(controller.imageURL!)
                   : controller.imageBytes.value == null
                       ? Center(child: Text(StringManager.SelectImage.tr))

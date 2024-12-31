@@ -18,6 +18,7 @@ class MyProductSellerPageController extends GetxController {
 
   void addProduct() {
     productController.moniterMode.value = false;
+    productController.getCategorys();
     homeController.indexPageSeller.value = 3;
   }
 

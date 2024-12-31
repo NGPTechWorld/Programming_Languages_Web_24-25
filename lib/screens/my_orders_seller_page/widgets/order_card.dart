@@ -169,15 +169,7 @@ class OrderCard extends GetView<MyOrdersSellerPageController> {
                             ),
                             Row(
                               children: [
-                                GestureDetector(
-                                    onTap: () {
-                                      controller.rejectOrder(
-                                          orderModel, context);
-                                    },
-                                    child: StatusLabel(statusId: 4)),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                                
                                 GestureDetector(
                                     onTap: () {
                                       controller.completeOrder(

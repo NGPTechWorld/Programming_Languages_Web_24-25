@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "http://192.168.1.2:8000/api";
+  static const String baserUrl = "http://192.168.1.50:8000/api";
 
   //Admin
   static const String addMarket = "/admins/addMarket";

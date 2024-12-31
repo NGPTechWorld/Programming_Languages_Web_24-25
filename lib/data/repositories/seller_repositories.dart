@@ -333,7 +333,7 @@ class ImpSellerRepositories implements SellerRepositories {
     AppResponse response = AppResponse(success: false);
     try {
       response.data = await api.request(
-          url: EndPoints.baserUrl + EndPoints.getCategory,
+          url: EndPoints.baserUrl + EndPoints.getAllCategories,
           method: Method.get,
           requiredToken: false,
           params: []);

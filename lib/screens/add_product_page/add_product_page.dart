@@ -14,6 +14,7 @@ class AddProductPage extends GetView<AddProductPageController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getCategorys();
     return Scaffold(
       appBar: AppBar(
         title: Obx(

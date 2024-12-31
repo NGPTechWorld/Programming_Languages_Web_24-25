@@ -30,13 +30,6 @@ class CardManager extends GetView<MyManagersAdminPageController> {
             style: StyleManager.h3_Semibold(),
           ),
           minVerticalPadding: AppPadding.p8,
-          trailing: IconButton(
-            onPressed: () {
-              controller.delete(manager);
-            },
-            color: ColorManager.redColor,
-            icon: Icon(Icons.delete),
-          ),
         ),
       ),
     );

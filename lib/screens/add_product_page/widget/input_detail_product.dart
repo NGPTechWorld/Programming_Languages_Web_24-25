@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quick_delivery_admin/app/config/color_manager.dart';
 import 'package:quick_delivery_admin/app/config/string_manager.dart';
 import 'package:quick_delivery_admin/app/config/style_manager.dart';
 import 'package:quick_delivery_admin/app/config/values_manager.dart';
@@ -42,23 +43,27 @@ class InputDetailProduct extends GetView<AddProductPageController> {
             StringManager.SelectCategory.tr,
             style: StyleManager.h4_Medium(),
           ),
-          SizedBox(
-            width: AppSizeScreen.screenWidth * 0.2,
-            child: DropdownButtonFormField<int>(
-              value: controller
-                  .selectedCategory.value, // استخدام RxInt.value مباشرة
-              onChanged: (newValue) {
-                controller.selectedCategory.value = newValue!;
-              },
-              items: controller.categories.map((category) {
-                return DropdownMenuItem<int>(
-                  value: category['id'] as int,
-                  child: Text(
-                    category['name'] as String,
-                    style: StyleManager.h4_Regular(),
-                  ),
-                );
-              }).toList(),
+          Obx(
+            () => SizedBox(
+              width: AppSizeScreen.screenWidth * 0.2,
+              child: DropdownButtonFormField<int>(
+                dropdownColor: ColorManager.whiteColor,
+                
+                value: controller
+                    .selectedCategory.value, 
+                onChanged: (newValue) {
+                  controller.selectedCategory.value = newValue!;
+                },
+                items: controller.categories.map((category) {
+                  return DropdownMenuItem<int>(
+                    value: category.id,
+                    child: Text(
+                      category.name,
+                      style: StyleManager.h4_Regular(),
+                    ),
+                  );
+                }).toList(),
+              ),
             ),
           ),
           SizedBox(height: 10),
