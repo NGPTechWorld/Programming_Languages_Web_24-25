@@ -1,0 +1,7 @@
+Markets:
+===================
+username:	nour 	pass:	nour0000
+username:	ngp 	pass:	ngp00000
+username:	gomoat 	pass:	gomoat0000
+username:	kareem 	pass:	kareem0000
+username:	jaber 	pass:	jaber0000
